@@ -6,6 +6,14 @@ const supportedAPI = ['init', 'message']; // enlist all methods supported by API
 /**
     The main entry of the application
     */
+
+    (function() {
+        // The following code will be enclosed within an anonymous function
+        var foo = "Hello World!";
+        alert("Testing widget")
+        document.write("<p>Inside our anonymous function foo means '" + foo + '".</p>');
+    })(); 
+
 function app(window) {
     console.log('JS-Widget starting');
 
