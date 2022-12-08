@@ -1,5 +1,6 @@
 import { ping } from './services'
 import { show } from './views/message'
+window["initializing"] = initializatonWidget
 
 const supportedAPI = ['init', 'message']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
 
@@ -13,7 +14,10 @@ const supportedAPI = ['init', 'message']; // enlist all methods supported by API
         alert("Testing widget")
         document.write("<p>Inside our anonymous function foo means '" + foo + '".</p>');
     })(); 
-
+function initializatonWidget(){
+    console.log("Initializing widget")
+    return "Initializing widget2"
+}
 function app(window) {
     console.log('JS-Widget starting');
 
