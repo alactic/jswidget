@@ -1,0 +1,84 @@
+.transfer-container-495gjjhg-gkhkhjg{ 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E5E5E5;
+    height: 100%;
+}
+.transfer-container-495gjjhg-gkhkhjg .transfer-content{ 
+    width: 400px;
+}
+.transfer-container-495gjjhg-gkhkhjg .transfer-header{
+    width: 400px;
+    height: 179px;
+    background: #175FFF;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.transfer-container-495gjjhg-gkhkhjg .transfer-header-icons {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 29px 0 24px;
+}
+.transfer-container-495gjjhg-gkhkhjg .transfer-header .transfer-header-text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    padding: 40px 61px 14px 24px;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+}
+.transfer-container-495gjjhg-gkhkhjg .transfer-options {
+  padding: 62px 24px 24px 24px;
+  border-radius: 10px;
+  margin-top: -20px;
+  background-color: #FFFFFF;
+}
+.transfer-container-495gjjhg-gkhkhjg .transfer-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(23, 95, 255, 0.2);
+  margin: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.transfer-container-495gjjhg-gkhkhjg .transfer-option {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #181724;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1.8px solid #175FFF;
+   border-radius: 5px;
+   margin-bottom: 16px;
+   cursor: pointer;
+   padding-right: 23px;
+}
+.transfer-container-495gjjhg-gkhkhjg .option {
+    display: flex;
+}
+.transfer-container-495gjjhg-gkhkhjg .secure-baseone {
+    display: flex;
+    justify-content: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #3A434B;
+    margin-top: 20px;
+}

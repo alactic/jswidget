@@ -1,6 +1,8 @@
 import { ping } from './services'
 import { show } from './views/message'
 window["initializing"] = initializatonWidget
+window["initializingBankPayment"] = initializeBankPayment
+
 
 const supportedAPI = ['init', 'message']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
 
@@ -10,17 +12,31 @@ const supportedAPI = ['init', 'message']; // enlist all methods supported by API
 
     (function() {
         // The following code will be enclosed within an anonymous function
-        var foo = "Hello World!";
-        alert("Testing widget")
-        document.write("<p>Inside our anonymous function foo means '" + foo + '".</p>');
+        // var foo = "Hello World!";
+        // alert("Testing widget")
+        // document.write("<p>Inside our anonymous function foo means '" + foo + '".</p>');
     })(); 
+
+    function loadPage(href)
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", href, false);
+                xmlhttp.send();
+                return xmlhttp.responseText;
+            }
 function initializatonWidget(){
-    console.log("Initializing widget")
-    return "Initializing widget2"
+    // console.log("Initializing widget")
+    // document.getElementById("content-body").innerHTML='<object type="text/html" data="./views/paymentPlan.html" ></object>';
+    document.getElementById("content-body").innerHTML=loadPage("./paymentPlan.html");
+    // return "Initializing widget2"
+}
+function initializeBankPayment(){
+    console.log("bank payment");
+    document.getElementById("content-body").innerHTML=loadPage("./bankPayment.html");
 }
 function app(window) {
     console.log('JS-Widget starting');
-
+    initializatonWidget()
     // set default configurations
     let configurations = {
         someDefaultConfiguration: false

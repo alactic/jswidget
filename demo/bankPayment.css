@@ -1,0 +1,84 @@
+.bank-payment-container-iitg33405-fgti594{ 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E5E5E5;
+    height: 100%;
+}
+.bank-payment-container-iitg33405-fgti594 .bank-payment-content{ 
+    width: 400px;
+    background-color: #FFFFFF;
+}
+.bank-payment-container-iitg33405-fgti594 .bank-payment-header{
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #D7DCE0;
+    padding: 0 24px;
+}
+.bank-payment-container-iitg33405-fgti594 .bank-payment-items {
+    padding: 24px 24px 36px 24px;
+}
+.bank-payment-container-iitg33405-fgti594 .payment-title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #0A2540;
+    margin-bottom: 34px;
+}
+.bank-payment-container-iitg33405-fgti594 label {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: #3A434B;
+}
+.bank-payment-container-iitg33405-fgti594 input {
+    height: 48px;
+    width: 100%;
+    border: 1px solid #D7DCE0;
+    border-radius: 4px;
+    margin: 8px 0 24px 0;
+    padding: 0 16px;
+}
+.bank-payment-container-iitg33405-fgti594 .d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.bank-payment-container-iitg33405-fgti594 .pay {
+    height: 40px;
+    width: 100%;
+    background: #175FFF;
+    border-radius: 4px;
+    text-align: center;
+    border: none;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    margin: 8px 0 24px 0;
+}
+.bank-payment-container-iitg33405-fgti594 .change-payment {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #3A434B;
+    cursor: pointer;
+}
+.bank-payment-container-iitg33405-fgti594 .expiry{
+    margin-right: 10px;
+}
+.bank-payment-container-iitg33405-fgti594 .cvv{
+    margin-left: 10px;
+}

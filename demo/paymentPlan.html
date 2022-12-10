@@ -1,0 +1,57 @@
+<html>
+<head>
+    <title>BaseOne</title>
+    <link rel="stylesheet" href="paymentPlan.css">
+</head>
+<body id="content-body">
+    <div class="transfer-container-495gjjhg-gkhkhjg">
+    <div class="transfer-content">
+    <div class="transfer-header">
+        <div class="transfer-header-icons">
+            <span>cbaseOne</span>
+            <img src="./assets/close-icon.jpg" alt="icon"/>
+        </div>
+        <div class="transfer-header-text">How would you like to pay NGN 1000?</div>
+    </div>
+    <div class="transfer-options">
+        <div class="transfer-option" onclick="window.initializingBankPayment()">
+            <div class="option">
+                <div class="transfer-icon"><img src="./assets/card-icon.jpg" alt="icon"/></div>
+                <div>Card Payment</div>
+            </div>
+            <img src="./assets/arrow-right.jpg" alt="arrow"/>
+        </div>
+        <div class="transfer-option">
+            <div class="option">
+                <div class="transfer-icon"><img src="./assets/ussd.jpg" alt="icon"/></div>
+                <div>USSD</div>
+            </div>
+            <img src="./assets/arrow-right.jpg" alt="arrow"/>
+        </div>
+        <div class="transfer-option">
+            <div class="option">
+                <div class="transfer-icon"><img src="./assets/bank-icon.jpg" alt="icon"/></div>
+                <div>Bank Transfer</div>
+            </div>
+            <img src="./assets/arrow-right.jpg" alt="arrow"/>
+        </div>
+        <div class="secure-baseone">
+            <img src="./assets/secure-icon.jpg" alt="icon"/>Secured by &nbsp;<b>Baseone</b>
+        </div>
+    </div>
+        </div>
+</div>
+    <script src="../src/main.js"></script>
+    <script>
+        console.log({window})
+        (function (w,d,s,o,f,js,fjs) {
+            w['JS-Widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+            js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+            js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+        }(window, document, 'script', 'mw', './widget.js'));
+        mw('init', { someConfiguration: 42 });
+        mw('message', 'Hello world!');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>BaseOne</title>
+    <link rel="stylesheet" href="bankPayment.css">
+</head>
+<body id="content-body">
+    <div class="bank-payment-container-iitg33405-fgti594">
+    <div class="bank-payment-content">
+        <div class="bank-payment-header">
+            <span>cbaseOne</span>
+            <img src="./assets/close-icon.jpg" alt="icon"/>
+        </div>
+    <div class="bank-payment-items">
+        <div class="payment-title">Enter your card details</div>
+        <div>
+            <label>Card Number</label>
+            <div>
+                <input placeholder="0000 0000 0000 0000"/>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="expiry">
+                <label>Expiry Date</label>
+                <div>
+                    <input placeholder="MM / YY"/>
+                </div>
+            </div>
+            <div class="cvv">
+                <label>CVV</label>
+                <div>
+                    <input placeholder="123"/>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="pay">Pay 1000 NGN</button>
+            <div class="change-payment" onclick="window.initializing()">Change Payment Method</div>
+        </div>
+       </div>
+        </div>
+</div>
+   <script src="../src/main.js"></script>
+    <script>
+        (function (w,d,s,o,f,js,fjs) {
+            w['JS-Widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+            js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+            js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+        }(window, document, 'script', 'mw', './widget.js'));
+        mw('init', { someConfiguration: 42 });
+        mw('message', 'Hello world!');
+
+    </script>
+</body>
+</html>
