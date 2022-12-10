@@ -25,13 +25,12 @@ const supportedAPI = ['init', 'message']; // enlist all methods supported by API
                 return xmlhttp.responseText;
             }
 function initializatonWidget(){
-    // console.log("Initializing widget")
+    console.log("Initializing widget")
     // document.getElementById("content-body").innerHTML='<object type="text/html" data="./views/paymentPlan.html" ></object>';
     document.getElementById("content-body").innerHTML=loadPage("./paymentPlan.html");
-    // return "Initializing widget2"
+    return "Initializing widget2"
 }
 function initializeBankPayment(){
-    console.log("bank payment");
     document.getElementById("content-body").innerHTML=loadPage("./bankPayment.html");
 }
 function app(window) {
