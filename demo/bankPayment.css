@@ -6,6 +6,10 @@
     align-items: center;
     background-color: #E5E5E5;
     height: 100%;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
 }
 .bank-payment-container-iitg33405-fgti594 .bank-payment-content{ 
     width: 400px;
