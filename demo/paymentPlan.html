@@ -1,9 +1,28 @@
-<html>
+<!-- <html>
 <head>
     <title>BaseOne</title>
     <link rel="stylesheet" href="paymentPlan.css">
+    <script>
+        function initializeBankPayment(){
+            console.log("plan")
+            const divs = document.getElementsByTagName("div");
+            const contents = document.getElementsByClassName("content");
+            // alert(contents.length)
+            if (divs.length) {
+                // contents[0].innerHTML = "";
+            //    divs[0].parentNode.removeChild(divs[0]);
+            //    const elemDiv = document.createElement('div');
+            //    elemDiv.setAttribute("id", "content-body");
+            //    window.document.body.insertBefore(elemDiv, window.document.body.firstChild);
+               // document.body.append(elemDiv)// window.document.body.insertBefore(elemDiv, window.document.body.firstChild);
+            //    document.getElementById("content-body").innerHTML='<object type="text/html" style="height:100%; width:100%; position:fixed; z-index: 1000" data="http://localhost:8080/bankPayment.html" ></object>';
+            contents[0].innerHTML='<object type="text/html" style="height:100%; width:100%; position:fixed; z-index: 1000" data="http://localhost:8080/bankPayment.html" ></object>';
+            }
+            // document.getElementById("payment-plan").innerHTML="";
+        }
+    </script>
 </head>
-<body id="content-body">
+<body class="content">
     <div class="transfer-container-495gjjhg-gkhkhjg">
     <div class="transfer-content">
     <div class="transfer-header">
@@ -14,7 +33,7 @@
         <div class="transfer-header-text">How would you like to pay NGN 1000?</div>
     </div>
     <div class="transfer-options">
-        <div class="transfer-option" onclick="window.initializingBankPayment()">
+        <div class="transfer-option" onclick="initializeBankPayment()">
             <div class="option">
                 <div class="transfer-icon"><img src="./assets/card-icon.jpg" alt="icon"/></div>
                 <div>Card Payment</div>
@@ -41,17 +60,6 @@
     </div>
         </div>
 </div>
-    <script src="../src/main.js"></script>
-    <script>
-        console.log({window})
-        (function (w,d,s,o,f,js,fjs) {
-            w['JS-Widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
-            js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-            js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-        }(window, document, 'script', 'mw', './widget.js'));
-        mw('init', { someConfiguration: 42 });
-        mw('message', 'Hello world!');
-
-    </script>
+        
 </body>
-</html>
+</html> -->

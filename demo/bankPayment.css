@@ -1,12 +1,16 @@
-.bank-payment-container-iitg33405-fgti594{ 
-    position: relative;
+
+.content {
     display: flex;
+    align-items: center;
     justify-content: center;
-    flex-direction: column;
+}
+.bank-payment-container-iitg33405-fgti594{ 
+    position: absolute;
+    display: none;
+    justify-content: center;
     align-items: center;
     background-color: #E5E5E5;
     height: 100%;
-    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;

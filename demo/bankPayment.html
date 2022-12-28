@@ -2,15 +2,71 @@
 <head>
     <title>BaseOne</title>
     <link rel="stylesheet" href="bankPayment.css">
+    <link rel="stylesheet" href="paymentPlan.css">
+    <script src="../src/main.js" type="application/javascript"></script>
+    <script>
+        function initializatonWidget(){
+            document.getElementById( 'bank-payment-container-iitg33405-fgti594' ).style.display = 'none';
+            document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
+        }
+        function initializeBankPayment(){
+            document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'none';
+            document.getElementById( 'bank-payment-container-iitg33405-fgti594' ).style.display = 'flex';
+        }
+        function closeModal(){
+            console.log({window, kk:document.getElementById("content-body")})
+            window.close();
+            // closeWidget();
+        }
+    </script>
 </head>
-<body id="content-body">
-    <div class="bank-payment-container-iitg33405-fgti594">
-    <div class="bank-payment-content">
+<body class="content">
+    <div id="transfer-container-495gjjhg-gkhkhjg" class="transfer-container-495gjjhg-gkhkhjg">
+        <div class="transfer-content">
+        <div class="transfer-header">
+            <div class="transfer-header-icons">
+                <span onclick="closeModal()">cbaseOne</span>
+                <img src="./assets/close-icon.jpg" alt="icon"/>
+            </div>
+            <div class="transfer-header-text">How would you like to pay NGN 1000?</div>
+        </div>
+        <div class="transfer-options">
+            <div class="transfer-option" onclick="initializeBankPayment()">
+                <div class="option">
+                    <div class="transfer-icon"><img src="./assets/card-icon.jpg" alt="icon"/></div>
+                    <div>Card Payment</div>
+                </div>
+                <img src="./assets/arrow-right.jpg" alt="arrow"/>
+            </div>
+            <div class="transfer-option">
+                <div class="option">
+                    <div class="transfer-icon"><img src="./assets/ussd.jpg" alt="icon"/></div>
+                    <div>USSD</div>
+                </div>
+                <img src="./assets/arrow-right.jpg" alt="arrow"/>
+            </div>
+            <div class="transfer-option">
+                <div class="option">
+                    <div class="transfer-icon"><img src="./assets/bank-icon.jpg" alt="icon"/></div>
+                    <div>Bank Transfer</div>
+                </div>
+                <img src="./assets/arrow-right.jpg" alt="arrow"/>
+            </div>
+            <div class="secure-baseone">
+                <img src="./assets/secure-icon.jpg" alt="icon"/>Secured by &nbsp;<b>Baseone</b>
+            </div>
+        </div>
+     </div>
+     </div>
+    
+            
+    <div id="bank-payment-container-iitg33405-fgti594" class="bank-payment-container-iitg33405-fgti594">
+        <div class="bank-payment-content">
         <div class="bank-payment-header">
-            <span>cbaseOne</span>
+            <span onclick="closeModal()">cbaseOne</span>
             <img src="./assets/close-icon.jpg" alt="icon"/>
         </div>
-    <div class="bank-payment-items">
+       <div class="bank-payment-items">
         <div class="payment-title">Enter your card details</div>
         <div>
             <label>Card Number</label>
@@ -34,21 +90,10 @@
         </div>
         <div>
             <button class="pay">Pay 1000 NGN</button>
-            <div class="change-payment" onclick="window.initializing()">Change Payment Method</div>
+            <div class="change-payment" onclick="initializatonWidget()">Change Payment Method</div>
         </div>
        </div>
         </div>
-</div>
-   <script src="../src/main.js"></script>
-    <script>
-        (function (w,d,s,o,f,js,fjs) {
-            w['JS-Widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
-            js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
-            js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-        }(window, document, 'script', 'mw', './widget.js'));
-        mw('init', { someConfiguration: 42 });
-        mw('message', 'Hello world!');
-
-    </script>
+    </div>
 </body>
 </html>
