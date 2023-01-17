@@ -3,30 +3,128 @@
     <title>BaseOne</title>
     <link rel="stylesheet" href="bankPayment.css">
     <link rel="stylesheet" href="paymentPlan.css">
-    <script src="../src/main.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="bankTransfer.css">
+    <link rel="stylesheet" href="transactionFeedback.css">
+    <link rel="stylesheet" href="transaction-loading.css">
+    <script src="widget.js" type="application/javascript"></script>
     <script>
+        var reference = "";
         function initializatonWidget(){
             document.getElementById( 'bank-payment-container-iitg33405-fgti594' ).style.display = 'none';
             document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
+        }
+
+        function initialise(){
+            var url = new URL(window.location.href);
+            var dataPayload = url.searchParams.get("data");
+            const imageUrl = JSON.parse(dataPayload).imageUrl;
+            document.getElementById("logo").src= imageUrl;
+            document.getElementById("logo2").src= imageUrl;
+            document.getElementById("logo3").src= imageUrl;
+            document.getElementsByClassName("logo-icon")[0].src= imageUrl;
+
+            fetch('https://afcollectionaggregatortest.azurewebsites.net/api/v1/initialize', {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Api-Key": "AF1_fS1-6gXo60-KPccJ71A9cw"
+            },
+            body: dataPayload
+            })
+            .then(response => response.json())
+            .then(res => {
+            if(!res.requestSuccessful){
+                document.getElementsByClassName("transaction-feedback-container-iitg33405-fgti594")[0].style.display="flex"
+                document.getElementsByClassName("transaction-message-items")[0].style.display="none"
+                document.getElementsByClassName("transaction-failed-message-items")[0].style.display="flex"
+                document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
+            }else{
+                console.log({res})
+                reference = res.responseData.transactionReference
+                document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
+            }
+            document.getElementsByClassName("transaction-loading-container-iitg33405-fgti594")[0].style.display="none"
+           }).catch(error => {
+               console.log({error});
+           })            
+                        
+        }
+
+        function pay(){
+            document.getElementsByClassName("loader")[0].style.display="inline-block"
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => response.json())
+            .then(json => {
+          var url = new URL(window.location.href);
+            var c = url.searchParams.get("data");
+            console.log(JSON.parse(c).token);
+            
+            document.getElementsByClassName("loader")[0].style.display="none"
+           })      
+        }
+
+        function transfer(){
+            document.getElementById( 'bank-transfer-iitg33405-fgti594' ).style.display = 'none';
+            // document.getElementById( 'transaction-feedback-fgti594' ).style.display = 'flex';  
+            document.getElementById( 'transaction-message-fgti594' ).style.display = 'flex';  
+               
         }
         function initializeBankPayment(){
             document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'none';
             document.getElementById( 'bank-payment-container-iitg33405-fgti594' ).style.display = 'flex';
         }
-        function closeModal(){
-            console.log({window, kk:document.getElementById("content-body")})
-            window.close();
-            // closeWidget();
+        function bankTransfer(){
+            console.log({reference})
+            document.getElementsByClassName("transaction-loading-container-iitg33405-fgti594")[0].style.display="flex";
+            document.getElementsByClassName( 'transfer-container-495gjjhg-gkhkhjg' )[0].style.display = 'none';
+
+            fetch(`https://afcollectionaggregatortest.azurewebsites.net/api/v1/transfer/${reference}`, {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Api-Key": "AF1_fS1-6gXo60-KPccJ71A9cw"
+            },
+            body: null
+            })
+            .then(response => response.json())
+            .then(res => {
+                console.log({res})
+            if(!res.requestSuccessful){
+                document.getElementsByClassName("transaction-feedback-container-iitg33405-fgti594")[0].style.display="flex"
+                document.getElementsByClassName("transaction-message-items")[0].style.display="none"
+                document.getElementsByClassName("transaction-failed-message-items")[0].style.display="flex"
+                document.getElementsByClassName("message-desc")[0].innerHTML=res.message
+            }else{
+                document.getElementsByClassName( 'bank-transfer-container-iitg33405-fgti594' )[0].style.display = 'flex';
+                document.getElementsByClassName( 'bank-transfer-iitg33405-fgti594' )[0].style.display = 'flex';
+                document.getElementsByClassName("amount")[0].innerHTML=res.message
+                document.getElementsByClassName("currency")[0].innerHTML=res.message
+                document.getElementById("bank-name").innerHTML=res.message
+                document.getElementById("account-number").innerHTML=res.message
+                document.getElementsByClassName("message-desc")[0].innerHTML=res.message
+
+            }
+            document.getElementsByClassName("transaction-loading-container-iitg33405-fgti594")[0].style.display="none"
+           }).catch(error => {
+               console.log({error});
+           })
+            // document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'none';
+            // document.getElementById( 'bank-transfer-iitg33405-fgti594' ).style.display = 'flex';
+        }
+        function closeModal(){       
+            closePaymentWidget();
         }
     </script>
 </head>
-<body class="content">
+<body class="content" onload="initialise()">
     <div id="transfer-container-495gjjhg-gkhkhjg" class="transfer-container-495gjjhg-gkhkhjg">
         <div class="transfer-content">
         <div class="transfer-header">
             <div class="transfer-header-icons">
-                <span onclick="closeModal()">cbaseOne</span>
-                <img src="./assets/close-icon.jpg" alt="icon"/>
+                <img src="" onclick="closeModal()" id="logo" class="logo-icon" alt="icon"/>
+                <img src="./assets/cancel-icon-white.png" onclick="closeModal()" class="cancel-icon" alt="icon"/>
             </div>
             <div class="transfer-header-text">How would you like to pay NGN 1000?</div>
         </div>
@@ -38,14 +136,14 @@
                 </div>
                 <img src="./assets/arrow-right.jpg" alt="arrow"/>
             </div>
-            <div class="transfer-option">
+            <!-- <div class="transfer-option">
                 <div class="option">
                     <div class="transfer-icon"><img src="./assets/ussd.jpg" alt="icon"/></div>
                     <div>USSD</div>
                 </div>
                 <img src="./assets/arrow-right.jpg" alt="arrow"/>
-            </div>
-            <div class="transfer-option">
+            </div> -->
+            <div class="transfer-option" onclick="bankTransfer()">
                 <div class="option">
                     <div class="transfer-icon"><img src="./assets/bank-icon.jpg" alt="icon"/></div>
                     <div>Bank Transfer</div>
@@ -63,8 +161,8 @@
     <div id="bank-payment-container-iitg33405-fgti594" class="bank-payment-container-iitg33405-fgti594">
         <div class="bank-payment-content">
         <div class="bank-payment-header">
-            <span onclick="closeModal()">cbaseOne</span>
-            <img src="./assets/close-icon.jpg" alt="icon"/>
+            <img src="" onclick="closeModal()" id="logo" class="logo-icon" alt="icon"/>
+            <img src="./assets/cancel-icon.png" onclick="closeModal()" class="cancel-icon" alt="icon"/>
         </div>
        <div class="bank-payment-items">
         <div class="payment-title">Enter your card details</div>
@@ -89,11 +187,97 @@
             </div>
         </div>
         <div>
-            <button class="pay">Pay 1000 NGN</button>
+            <button class="pay-button" onclick="pay()">Pay 1000 NGN <div class="loader"></div></button>
             <div class="change-payment" onclick="initializatonWidget()">Change Payment Method</div>
         </div>
        </div>
         </div>
     </div>
+
+    <div id="bank-transfer-iitg33405-fgti594" class="bank-transfer-container-iitg33405-fgti594">
+        <div class="bank-transfer-content">
+        <div class="bank-transfer-header">
+            <img src="" onclick="closeModal()" id="logo" class="logo-icon" alt="icon"/>
+            <img src="./assets/cancel-icon.png" onclick="closeModal()" class="cancel-icon" alt="icon"/>
+        </div>
+        <div class="payment-title">
+            <div class="see-details">See details below</div>
+            <div class="pay">Pay <span class="amount">4000</span><span class="currency">NGN</span></div>
+        </div>
+       <div class="bank-transfer-items">
+        
+        <div class="send-to">
+            Send <b><span class="currency">NGN</span><span class="amount">4000</span></b> to <br/>Baseone checkout
+        </div>
+        <div class="transfer-info">
+        <div id="bank-name">Wema Bank</div>
+        <div id="account-number">760934590</div>
+        <div class="desc">
+            Use this account for this transaction only.</br/>
+            Account expires in <b>30 mins</b>
+        </div>
+        </div>
+        <div>
+            <button class="pay-button" onclick="transfer()">I’ve sent the money</button>
+         </div>
+       </div>
+        </div>
+    </div>
+
+    <div id="transaction-feedback-fgti594" class="transaction-loading-container-iitg33405-fgti594">
+        <div class="transaction-feedback-content">
+            <div class="bank-transfer-header">
+                <img src="" onclick="closeModal()" id="logo2" class="logo-icon" alt="icon"/>
+                <img src="./assets/cancel-icon.png" onclick="closeModal()" class="cancel-icon" alt="icon"/>
+            </div>
+            <div class="content">
+                <div class="description">
+                    <div class="content-loader"></div>
+                    Please wait while your transaction 
+                    is in progress..
+                </div>
+                <div class="secure-baseone">
+                    <img src="./assets/secure-icon.jpg" alt="icon"/>Secured by &nbsp;<b>Baseone</b>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="transaction-message-fgti594" class="transaction-feedback-container-iitg33405-fgti594">
+        <div class="transaction-feedback-content">
+            <div class="bank-transfer-header">
+                <img src="" onclick="closeModal()" id="logo3" class="logo-icon" alt="icon"/>
+                <img src="./assets/cancel-icon.png" onclick="closeModal()" class="cancel-icon" alt="icon"/>
+            </div>
+            <div class="transaction-failed-message-items">
+                <div class="message-icon">
+                    <div class="message-icon-failed">
+                        <img src="./assets/failed.png" alt="icon"/>
+                    </div>
+                </div>
+                <div class="message-title">Transaction Failed</div>
+                <div class="message-desc">Your transaction failed, please 
+                    try again!</div>
+                <div>
+                    <button class="close-button" onclick="closeModal()">Close</button>
+                </div>
+            </div>
+            <div class="transaction-message-items">
+                <div class="message-icon">
+                    <div class="message-icon-success">
+                        <img src="./assets/success.png" alt="icon"/>
+                    </div>
+                </div>
+                <div class="message-title">Successful</div>
+                <div class="message-desc">Your payment was completed successfully</div>
+                <div>
+                    <button class="pay-button" onclick="pay()">Done</button>
+                </div>
+            </div>
+       </div>
+        </div>
+    </div>
+
 </body>
 </html>

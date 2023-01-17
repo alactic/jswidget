@@ -1,0 +1,119 @@
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bank-transfer-container-iitg33405-fgti594{ 
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #E5E5E5;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100000000;
+}
+.bank-transfer-container-iitg33405-fgti594 .bank-transfer-content{ 
+    width: 400px;
+    background-color: #FFFFFF;
+}
+
+.transfer-header {
+    padding-bottom: 20px;
+}
+.bank-transfer-header{
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #D7DCE0;
+    padding: 0 24px;
+}
+.bank-transfer-container-iitg33405-fgti594 .bank-transfer-items {
+    padding: 24px 24px 36px 24px;
+}
+.bank-transfer-container-iitg33405-fgti594 .payment-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px 0 24px;
+}
+.bank-transfer-container-iitg33405-fgti594 .payment-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    border-bottom: 1px solid #D7DCE0;
+}
+.bank-transfer-container-iitg33405-fgti594 .see-details {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #0A2540;
+ }
+.bank-transfer-container-iitg33405-fgti594 .pay {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #175FFF;
+}
+.bank-transfer-container-iitg33405-fgti594 .send-to {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #0D0F11;
+    text-align: center;
+    padding-bottom: 24px;
+}
+.bank-transfer-container-iitg33405-fgti594 #bank-name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #3A434B;
+    text-align: center;
+    padding-bottom: 16px;
+}
+.bank-transfer-container-iitg33405-fgti594 #account-number {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #242A34;
+    text-align: center;
+    padding-bottom: 24px;
+}
+.bank-transfer-container-iitg33405-fgti594 .desc {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: #242A34;
+    text-align: center;
+    padding-bottom: 24px;
+}
+.bank-transfer-container-iitg33405-fgti594 .transfer-info {
+    background: #F4F5F6;
+    border: 1px solid #D7DCE0;
+    border-radius: 5px;
+    padding: 40px 0 42px 0;
+    margin-bottom: 30px;
+
+}

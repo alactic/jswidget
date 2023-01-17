@@ -1,35 +1,32 @@
 import { show } from './views/message'
-window["initializing"] = initializatonWidget;
-window["close"] = closeWidget;
+window["baseoneCollect"] = initializatonWidget;
+window["closePaymentWidget"] = closeWidget;
 // window["hid"] = closeWidget;
+const domain = document.referrer;
 
 const supportedAPI = ['init', 'message']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
-function initializatonWidget(){
-    let elemDiv = document.createElement('div');
-    elemDiv.setAttribute("id", "content-body");
-    window.document.body.insertBefore(elemDiv, window.document.body.firstChild);
-    document.getElementById("content-body").innerHTML='<object type="text/html" style="height:100%; width:100%; position:fixed; z-index:10000" data="http://localhost:8080/bankPayment.html" ></object>';
+async function initializatonWidget(data){
+    console.log({data})
+    var iframe = document.createElement('iframe');
+  iframe.id = "hidden_iframe";
+  iframe.src = `http://localhost:8080/bankPayment.html?data=${JSON.stringify(data)}`;
+  iframe.style.width = "100%";
+    iframe.style.height = "100%";
+  iframe.style.top = "0";
+    iframe.style.left = "0";
+     iframe.style.position = "fixed";
+     iframe.style.zIndex = "300000";
+   
+  document.body.appendChild(iframe);
  }
 function closeWidget(){
-    // let elemDiv = document.createElement('div');
-    // elemDiv.setAttribute("id", "content-body");
-    // window.document.body.insertBefore(elemDiv, window.document.body.firstChild);
-    console.log("close")
-
-    if(document.getElementById("content-body")){
-        document.getElementById("content-body").innerHTML='';
-    }
+    var url = new URL(window.location.href);
+            var c = url.searchParams.get("data");
+            console.log(JSON.parse(c).url);
+    window.open(JSON.parse(c).url||document.referrer,'_parent','');
+    // window.open(document.referrer,'_parent','');
  }
- var hid = function(){
-    // let elemDiv = document.createElement('div');
-    // elemDiv.setAttribute("id", "content-body");
-    // window.document.body.insertBefore(elemDiv, window.document.body.firstChild);
-    console.log("close")
-
-    if(document.getElementById("content-body")){
-        document.getElementById("content-body").innerHTML='';
-    }
- }
+ 
 function app(window) {
     let configurations = {
         someDefaultConfiguration: false

@@ -1,6 +1,6 @@
 .transfer-container-495gjjhg-gkhkhjg{ 
     position: fixed;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background-color: #E5E5E5;
@@ -73,7 +73,7 @@
 .transfer-container-495gjjhg-gkhkhjg .option {
     display: flex;
 }
-.transfer-container-495gjjhg-gkhkhjg .secure-baseone {
+.secure-baseone {
     display: flex;
     justify-content: center;
     font-family: 'Inter';
