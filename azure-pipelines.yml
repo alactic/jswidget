@@ -1,0 +1,52 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+name: '$(major).$(minor).$(revision)'
+
+variables:
+  major: '2'
+  minor: '0'
+  revision: $[counter(format('{0}.{1}', variables['major'], variables['minor']), 0)]
+  nugetVersion: '$(major).$(minor).$(revision)'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.17.5'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
+
+#pack   
+- task: NuGetCommand@2
+  displayName: pack
+  inputs:
+    command: 'pack'
+    packagesToPack: 'baseonecollectwidget.nuspec'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'nugetVersion'
+
+
+
+
+#Nuget Push
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '205c30f1-6e00-4967-939e-822492a0716d'
+    allowPackageConflicts: true
+
