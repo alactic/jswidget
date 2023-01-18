@@ -9,6 +9,7 @@
     <script src="widget.js" type="application/javascript"></script>
     <script>
         var reference = "";
+        var publicKey = "";
         function initializatonWidget(){
             document.getElementById( 'bank-payment-container-iitg33405-fgti594' ).style.display = 'none';
             document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
@@ -18,9 +19,11 @@
             var url = new URL(window.location.href);
             var dataPayload = url.searchParams.get("data");
             const imageUrl = JSON.parse(dataPayload).imageUrl;
+            publicKey = JSON.parse(dataPayload).publicKey;
             document.getElementById("logo").src= imageUrl;
             document.getElementById("logo2").src= imageUrl;
             document.getElementById("logo3").src= imageUrl;
+            document.getElementById("logo4").src= imageUrl;
             document.getElementsByClassName("logo-icon")[0].src= imageUrl;
 
             fetch('https://afcollectionaggregatortest.azurewebsites.net/api/v1/initialize', {
@@ -28,7 +31,7 @@
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            "Api-Key": "AF1_fS1-6gXo60-KPccJ71A9cw"
+            "Api-Key": publicKey
             },
             body: dataPayload
             })
@@ -40,7 +43,6 @@
                 document.getElementsByClassName("transaction-failed-message-items")[0].style.display="flex"
                 document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
             }else{
-                console.log({res})
                 reference = res.responseData.transactionReference
                 document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
             }
@@ -64,10 +66,49 @@
            })      
         }
 
-        function transfer(){
-            document.getElementById( 'bank-transfer-iitg33405-fgti594' ).style.display = 'none';
-            // document.getElementById( 'transaction-feedback-fgti594' ).style.display = 'flex';  
-            document.getElementById( 'transaction-message-fgti594' ).style.display = 'flex';  
+        function validateTransfer(){
+            document.getElementsByClassName("transaction-loading-container-iitg33405-fgti594")[0].style.display="flex";
+            document.getElementsByClassName( 'transfer-container-495gjjhg-gkhkhjg' )[0].style.display = 'none';
+
+            fetch(`https://afcollectionaggregatortest.azurewebsites.net/api/v1/validate?transactionReference=${reference}`, {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            "Api-Key": publicKey
+            },
+            body: null
+            })
+            .then(response => response.json())
+            .then(res => {
+                const status = res.responseData.transactionStatus
+                if(status !== "Processing"){
+                    if(status !== "Success"){
+                        document.getElementsByClassName("transaction-feedback-container-iitg33405-fgti594")[0].style.display="flex"
+                        document.getElementsByClassName("transaction-message-items")[0].style.display="none"
+                        document.getElementsByClassName("transaction-failed-message-items")[0].style.display="flex"
+                        document.getElementsByClassName("message-desc")[0].innerHTML=res.message==="Successful"?"Failed":res.message
+                    }else{
+                        document.getElementsByClassName("transaction-feedback-container-iitg33405-fgti594")[0].style.display="flex"
+                        document.getElementsByClassName("transaction-message-items")[0].style.display="flex"
+                        document.getElementsByClassName("transaction-failed-message-items")[0].style.display="none"
+                        document.getElementsByClassName("amount")[0].innerHTML=res.message
+                        document.getElementsByClassName("currency")[0].innerHTML=res.message
+                        document.getElementById("bank-name").innerHTML=res.message
+                        document.getElementById("account-number").innerHTML=res.message
+                        document.getElementsByClassName("message-desc")[0].innerHTML=res.message
+                    }
+                    document.getElementsByClassName("transaction-loading-container-iitg33405-fgti594")[0].style.display="none"
+                }else{
+                   setTimeout(() => validateTransfer(), 15000)
+                }
+            
+           }).catch(error => {
+               console.log({error});
+           })
+            // document.getElementById( 'bank-transfer-iitg33405-fgti594' ).style.display = 'none';
+            // // document.getElementById( 'transaction-feedback-fgti594' ).style.display = 'flex';  
+            // document.getElementById( 'transaction-message-fgti594' ).style.display = 'flex';  
                
         }
         function initializeBankPayment(){
@@ -75,22 +116,26 @@
             document.getElementById( 'bank-payment-container-iitg33405-fgti594' ).style.display = 'flex';
         }
         function bankTransfer(){
-            console.log({reference})
             document.getElementsByClassName("transaction-loading-container-iitg33405-fgti594")[0].style.display="flex";
             document.getElementsByClassName( 'transfer-container-495gjjhg-gkhkhjg' )[0].style.display = 'none';
 
-            fetch(`https://afcollectionaggregatortest.azurewebsites.net/api/v1/transfer/${reference}`, {
+            fetch(`https://afcollectionaggregatortest.azurewebsites.net/api/v1/Transfer/${reference}`, {
             method: 'POST',
             headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            "Api-Key": "AF1_fS1-6gXo60-KPccJ71A9cw"
+            "Api-Key": publicKey
             },
-            body: null
+            body: JSON.stringify({
+                "additionalProp1": null,
+                "additionalProp2": null,
+                "additionalProp3": null
+                })
             })
             .then(response => response.json())
             .then(res => {
                 console.log({res})
+                const {TotalAmount, BankName, AccountNumber, ProviderMessage, ExpiryTime} = res.responseData
             if(!res.requestSuccessful){
                 document.getElementsByClassName("transaction-feedback-container-iitg33405-fgti594")[0].style.display="flex"
                 document.getElementsByClassName("transaction-message-items")[0].style.display="none"
@@ -98,11 +143,13 @@
                 document.getElementsByClassName("message-desc")[0].innerHTML=res.message
             }else{
                 document.getElementsByClassName( 'bank-transfer-container-iitg33405-fgti594' )[0].style.display = 'flex';
-                document.getElementsByClassName( 'bank-transfer-iitg33405-fgti594' )[0].style.display = 'flex';
-                document.getElementsByClassName("amount")[0].innerHTML=res.message
-                document.getElementsByClassName("currency")[0].innerHTML=res.message
-                document.getElementById("bank-name").innerHTML=res.message
-                document.getElementById("account-number").innerHTML=res.message
+                document.getElementsByClassName("amount")[0].innerHTML=TotalAmount
+                // document.getElementsByClassName("currency")[0].innerHTML=res.message
+                document.getElementsByClassName("amount")[1].innerHTML=TotalAmount
+                // document.getElementsByClassName("currency")[1].innerHTML=res.message
+                document.getElementById("bank-name").innerHTML=BankName
+                document.getElementById("account-number").innerHTML=AccountNumber
+                document.getElementById("expiryTime").innerHTML=ExpiryTime
                 document.getElementsByClassName("message-desc")[0].innerHTML=res.message
 
             }
@@ -197,7 +244,7 @@
     <div id="bank-transfer-iitg33405-fgti594" class="bank-transfer-container-iitg33405-fgti594">
         <div class="bank-transfer-content">
         <div class="bank-transfer-header">
-            <img src="" onclick="closeModal()" id="logo" class="logo-icon" alt="icon"/>
+            <img src="" onclick="closeModal()" id="logo4" class="logo-icon" alt="icon"/>
             <img src="./assets/cancel-icon.png" onclick="closeModal()" class="cancel-icon" alt="icon"/>
         </div>
         <div class="payment-title">
@@ -214,11 +261,11 @@
         <div id="account-number">760934590</div>
         <div class="desc">
             Use this account for this transaction only.</br/>
-            Account expires in <b>30 mins</b>
+            Account expires in <b><span id="expiryTime">30</span> mins</b>
         </div>
         </div>
         <div>
-            <button class="pay-button" onclick="transfer()">I’ve sent the money</button>
+            <button class="pay-button" onclick="validateTransfer()">I’ve sent the money</button>
          </div>
        </div>
         </div>
