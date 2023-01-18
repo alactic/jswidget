@@ -34,7 +34,7 @@ steps:
   displayName: pack
   inputs:
     command: 'pack'
-    packagesToPack: 'baseonecollectwidget.nuspec'
+    packagesToPack: 'BaseoneCollectWidget.nuspec'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'nugetVersion'
 
