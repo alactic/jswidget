@@ -16,7 +16,7 @@
 
   <files> 
 
-        <file src="dist\**" target="" />  
+        <file src="build\**" target="" />  
         <file src="*" exclude="*.nuspec" /> 
 
   </files>  
