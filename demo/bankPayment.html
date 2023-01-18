@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="bankTransfer.css">
     <link rel="stylesheet" href="transactionFeedback.css">
     <link rel="stylesheet" href="transaction-loading.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="widget.js" type="application/javascript"></script>
     <script>
         var reference = "";
@@ -87,7 +90,11 @@
                         document.getElementsByClassName("transaction-feedback-container-iitg33405-fgti594")[0].style.display="flex"
                         document.getElementsByClassName("transaction-message-items")[0].style.display="none"
                         document.getElementsByClassName("transaction-failed-message-items")[0].style.display="flex"
-                        document.getElementsByClassName("message-desc")[0].innerHTML=res.message==="Successful"?"Failed":res.message
+                        document.getElementsByClassName("message-desc")[0].innerHTML=res.message==="Successful"?"Failed":res.message;
+                        const url = new URL(window.location.href);
+                        const failureRes = url.searchParams.get("failure");
+                        const onFailure = eval("(" + failureRes + ")");
+                        onFailure()
                     }else{
                         document.getElementsByClassName("transaction-feedback-container-iitg33405-fgti594")[0].style.display="flex"
                         document.getElementsByClassName("transaction-message-items")[0].style.display="flex"
@@ -96,7 +103,12 @@
                         document.getElementsByClassName("currency")[0].innerHTML=res.message
                         document.getElementById("bank-name").innerHTML=res.message
                         document.getElementById("account-number").innerHTML=res.message
-                        document.getElementsByClassName("message-desc")[0].innerHTML=res.message
+                        document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
+                        const url = new URL(window.location.href);
+                        const successRes = url.searchParams.get("success");
+                        const onSuccess = eval("(" + successRes + ")");
+                        onSuccess()
+
                     }
                     document.getElementsByClassName("transaction-loading-container-iitg33405-fgti594")[0].style.display="none"
                 }else{

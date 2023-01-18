@@ -26,7 +26,7 @@
     padding: 24px 29px 0 24px;
 }
 .transfer-container-495gjjhg-gkhkhjg .transfer-header .transfer-header-text {
-    font-family: 'Inter';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -53,7 +53,7 @@
 }
 
 .transfer-container-495gjjhg-gkhkhjg .transfer-option {
-    font-family: 'Inter';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -76,7 +76,7 @@
 .secure-baseone {
     display: flex;
     justify-content: center;
-    font-family: 'Inter';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

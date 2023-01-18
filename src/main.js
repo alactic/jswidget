@@ -9,7 +9,7 @@ async function initializatonWidget(data){
     console.log({data})
     var iframe = document.createElement('iframe');
   iframe.id = "hidden_iframe";
-  iframe.src = `http://localhost:8080/bankPayment.html?data=${JSON.stringify(data)}`;
+  iframe.src = `http://localhost:8080/bankPayment.html?data=${JSON.stringify(data)}&&success=${data.onSuccess}&&failure=${data.onFailure}`;
   iframe.style.width = "100%";
     iframe.style.height = "100%";
   iframe.style.top = "0";
