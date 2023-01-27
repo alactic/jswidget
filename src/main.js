@@ -13,6 +13,7 @@ async function initializatonWidget(data){
   iframe.style.width = "100%";
     iframe.style.height = "100%";
   iframe.style.top = "0";
+  iframe.style.zIndex = "hidden";
     iframe.style.left = "0";
      iframe.style.position = "fixed";
      iframe.style.zIndex = "300000";
