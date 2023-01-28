@@ -70,28 +70,32 @@
                 <div class="payment-title">Enter your card details</div>
                 <div>
                     <label>Card Number</label>
-                    <div>
+                    <div class="input-field">
                         <input placeholder="0000 0000 0000 0000" id="c_number" onkeyup="return c_format(event)"/>
+                        <div id="c_number_error">Valid Card Number is requred</div>
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="expiry">
                         <label>Expiry Date</label>
-                        <div>
+                        <div class="input-field">
                             <input placeholder="MM / YY" id="c_expiry" onkeyup="c_expires_format(event)" maxlength=5/>
+                            <div id="c_expiry_error">Valid Expiry Date is requred</div>
                         </div>
                     </div>
                     <div class="cvv">
                         <label>CVV</label>
-                        <div>
+                        <div class="input-field">
                             <input placeholder="CVV" id="c_cvv" onkeyup="c_cvv_format(event)" maxlength=3/>
+                            <div id="c_cvv_error">Valid CVV is requred</div>
                         </div>
                     </div>
                 </div>
                 <div>
                         <label>Card Pin</label>
-                        <div>
+                        <div class="input-field">
                             <input placeholder="PIN" id="c_pin" onkeyup="c_pin_format(event)" maxlength=4/>
+                            <div id="c_pin_error">Valid Card Pin is requred</div>
                         </div>
                 </div>
                 <div>

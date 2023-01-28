@@ -80,12 +80,14 @@
     letter-spacing: 0.4px;
     color: #3A434B;
 }
+.bank-payment-container-iitg33405-fgti594 .input-field {
+    margin: 8px 0 20px 0;
+}
 .bank-payment-container-iitg33405-fgti594 input {
     height: 48px;
     width: 100%;
     border: 1px solid #D7DCE0;
     border-radius: 4px;
-    margin: 8px 0 24px 0;
     padding: 0 16px;
 }
 .bank-payment-container-iitg33405-fgti594 .d-flex {
@@ -155,6 +157,17 @@
     margin-left: 10px;
     animation: spin 1s linear infinite;
   }
+
+  #c_number_error, #c_expiry_error, #c_cvv_error, #c_pin_error{
+      color: #dc3545;
+      font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 5px;
+    display: none;
+  } 
   
   @keyframes spin {
     0% { transform: rotate(0deg); }

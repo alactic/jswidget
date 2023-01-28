@@ -7,13 +7,36 @@ function makeTransaction(type){
     delete payload['url'];
 
     if(type === "card"){
+        let validInput = false
         const chargeParameter = {
         "cardNumber": document.getElementById("c_number").value,
         "cardPin": document.getElementById("c_pin").value,
         "cardCvv": document.getElementById("c_cvv").value,
-        "cardExpiredYear": "20"+ document.getElementById("c_expiry").value.split('/')[1],
+        "cardExpiredYear": document.getElementById("c_expiry").value === ""? "":"20"+ document.getElementById("c_expiry").value.split('/')[1],
         "cardExpiredMonth": document.getElementById("c_expiry").value.split('/')[0]
        }
+        console.log({chargeParameter})
+        const {cardCvv, cardNumber, cardPin, cardExpiredMonth} = chargeParameter;
+       
+        if(cardNumber ==="") {
+            validInput = true;
+            document.getElementById("c_number_error").style.display = "block";
+        }
+        if(cardPin === "") {
+            validInput = true;
+            document.getElementById("c_pin_error").style.display = "block";
+        }
+        if(cardExpiredMonth === "") {
+            validInput = true;
+            document.getElementById("c_expiry_error").style.display = "block";
+        }
+        if(cardCvv.length !== 3) {
+            validInput = true;
+            document.getElementById("c_cvv_error").style.display = "block";
+        }
+        if(validInput) {
+            return
+        }
         totalAmount = cardAmount
         payload["chargeParameter"] = chargeParameter;  
          document.getElementById("atm-card-container-iitg33405-fgti594").style.display="none";
