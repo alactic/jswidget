@@ -94,7 +94,7 @@
                 <div>
                         <label>Card Pin</label>
                         <div class="input-field">
-                            <input placeholder="PIN" id="c_pin" onkeyup="c_pin_format(event)" maxlength=4/>
+                            <input placeholder="PIN" type="password" id="c_pin" onkeyup="c_pin_format(event)" maxlength=4/>
                             <div id="c_pin_error">Valid Card Pin is requred</div>
                         </div>
                 </div>
@@ -181,7 +181,7 @@
             <!-- START OF FAILED TRANSACTION MESSAGE -->
             <div id="transaction-message-fgti594" class="transaction-feedback-container-iitg33405-fgti594">
                 <div class="transaction-feedback-content">
-                    <div class="transaction-failed-message-items">
+                    <div id="transaction-failed-items" class="transaction-failed-message-items">
                         <div class="message-icon">
                             <div class="message-icon-failed">
                                 <img src="./assets/failed.png" alt="icon"/>
@@ -194,7 +194,7 @@
                             <button class="close-button" onclick="closeModal()">Close</button>
                         </div>
                     </div>
-                    <div class="transaction-message-items">
+                    <div id="transaction-items" class="transaction-message-items">
                         <div class="message-icon">
                             <div class="message-icon-success">
                                 <img src="./assets/success.png" alt="icon"/>

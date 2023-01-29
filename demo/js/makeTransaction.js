@@ -62,9 +62,9 @@ function makeTransaction(type){
         .then(res => {
         const {BankName, AccountNumber, ProviderMessage, ExpiryTime} = res.responseData
         if(!res.requestSuccessful){
-            document.getElementsByClassName("transaction-feedback-container-iitg33405-fgti594")[0].style.display="flex"
-            document.getElementsByClassName("transaction-message-items")[0].style.display="none"
-            document.getElementsByClassName("transaction-failed-message-items")[0].style.display="flex"
+            document.getElementById("transaction-message-fgti594").style.display="flex"
+            document.getElementById("transaction-items").style.display="none"
+            document.getElementById("transaction-failed-items").style.display="flex"
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message
         }else{
             reference = res.responseData.TransactionRefernce;
