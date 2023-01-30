@@ -1,5 +1,5 @@
 function validatePayment(type){
-    let validateUrl = `https://afcollectionaggregatortest.azurewebsites.net/api/v1/widget/validate?transactionReference=${reference}`
+    let validateUrl = `${BaseApiUrl}/payment/validate?transactionReference=${reference}`
     if(type === "card") {
         let cardPin = "";
         [1,2,3,4].forEach(val=>{

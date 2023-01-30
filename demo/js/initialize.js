@@ -5,8 +5,12 @@ var dataPayload;
 var clientAmount;
 var cardAmount;
 var transferAmount;
+var BaseApiUrl =
+window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('test') >0
+    ? "https://afcollectionaggregatortest.azurewebsites.net/api/v1"
+    : `${window.env?.baseApiUrl}/api/v1`
 
-function errorMessage(message){
+    function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
     document.getElementById("transaction-failed-items").style.display="flex"
@@ -25,7 +29,7 @@ async function initialise() {
     document.getElementById("logo6").src= imageUrl;
     document.getElementsByClassName("logo-icon")[0].src= imageUrl;
 
-    fetch('https://afcollectionaggregatortest.azurewebsites.net/api/v1/widget/config', {
+    fetch(`${BaseApiUrl}/payment/config`, {
     method: 'POST',
     headers: {
     'Accept': 'application/json',

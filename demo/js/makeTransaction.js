@@ -49,7 +49,7 @@ function makeTransaction(type){
         document.getElementById("widget-payment-container").style.display="flex";
         document.getElementById("transaction-loading-container-fgti594").style.display="flex";
         document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'none';
-        fetch(`https://afcollectionaggregatortest.azurewebsites.net/api/v1/widget/charge`, {
+        fetch(`${BaseApiUrl}/payment/charge`, {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
