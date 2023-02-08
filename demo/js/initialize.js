@@ -25,10 +25,16 @@ async function initialise() {
     publicKey = dataPayload.publicKey;
     clientAmount = dataPayload.amount;
     currency = dataPayload.currency;
+    channel = dataPayload.channel;
     document.getElementById("logo").src= imageUrl;
     document.getElementById("logo6").src= imageUrl;
     document.getElementsByClassName("logo-icon")[0].src= imageUrl;
 
+    if(channel.toLowerCase() === "transfer") {
+        document.getElementById("card").style.display = "none"
+    }else if(channel.toLowerCase() === "card") {
+        document.getElementById("transfer").style.display = "none"
+    }
     fetch(`${BaseApiUrl}/payment/config`, {
     method: 'POST',
     headers: {
