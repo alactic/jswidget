@@ -8,8 +8,10 @@ var transferAmount;
 var BaseApiUrl =
 window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('test') >0
     ? "https://afcollectionaggregatortest.azurewebsites.net/api/v1"
-    : `${window.env?.baseApiUrl}/api/v1`
+    : `https://afcollectionaggregatortest.azurewebsites.net/api/v1`
+    // : `${window.env?.baseApiUrl}/api/v1`
 
+    console.log({windowEnv: window.env})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
