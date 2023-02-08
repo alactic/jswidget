@@ -19,7 +19,7 @@ function validatePayment(type){
     headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    "Api-Key": publicKey
+    "Public-Key": publicKey
     },
     body: null
     })

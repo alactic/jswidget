@@ -23,7 +23,7 @@ async function initializatonWidget(data){
 function closeWidget(){
     var url = new URL(window.location.href);
             var c = url.searchParams.get("data");
-            console.log(JSON.parse(c).url);
+            console.log(JSON.parse(c).callackUrl);
     window.open(JSON.parse(c).url||document.referrer,'_parent','');
     // window.open(document.referrer,'_parent','');
  }

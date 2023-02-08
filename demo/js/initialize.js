@@ -42,7 +42,7 @@ async function initialise() {
     headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    "Api-Key": publicKey
+    "Public-Key": publicKey
     },
     body: JSON.stringify({currency, country})
     })
