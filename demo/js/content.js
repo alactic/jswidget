@@ -1,5 +1,5 @@
 function initializatonWidget(){
-    console.log({windowEnv3: window})
+    console.log({windowEnv3: window.env})
     document.getElementById( 'widget-payment-container' ).style.display = 'none';
     document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
 }
