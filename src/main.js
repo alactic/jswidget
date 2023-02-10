@@ -5,16 +5,12 @@ window["closePaymentWidget"] = closeWidget;
 const domain = document.referrer;
 
 const supportedAPI = ['init', 'message']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
-var url =
-window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('test') >0
-    ? "https://afcollectionaggregatortest.azurewebsites.net/api/v1"
-    : `https://afcollectionaggregatortest.azurewebsites.net/api/v1`
 
 async function initializatonWidget(data){
     console.log({data})
     var iframe = document.createElement('iframe');
   iframe.id = "hidden_iframe";
-  iframe.src = `https://baseonecollectwidgettest.azureedge.net/bankPayment.html?data=${JSON.stringify(data)}&&success=${data.onSuccess}&&failure=${data.onFailure}`;
+  iframe.src = `${window.location.origin}/bankPayment.html?data=${JSON.stringify(data)}&&success=${data.onSuccess}&&failure=${data.onFailure}`;
   iframe.style.width = "100%";
     iframe.style.height = "100%";
   iframe.style.top = "0";

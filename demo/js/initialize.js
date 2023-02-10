@@ -5,12 +5,21 @@ var dataPayload;
 var clientAmount;
 var cardAmount;
 var transferAmount;
-var BaseApiUrl =
-window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('test') >0
-    ? "https://afcollectionaggregatortest.azurewebsites.net/api/v1"
-    : `https://afcollectionaggregatortest.azurewebsites.net/api/v1`
-    // : `${window.env?.baseApiUrl}/api/v1`
+var BaseApiUrl = "";
 
+switch(window.location.origin) {
+    case window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('test') >0:
+        BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
+        break;
+    case window.location.origin.indexOf('staging') >0:
+        BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/api/v1";
+        break;
+    case window.location.origin.indexOf('baseonewidgetpayment') >0:
+        BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/api/v1";
+        break;
+    default:
+        console.log("url")
+}
     console.log({windowEnv3: window})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
