@@ -5,12 +5,29 @@ window["closePaymentWidget"] = closeWidget;
 const domain = document.referrer;
 
 const supportedAPI = ['init', 'message']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
+var url =
+window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('test') >0
+    ? "https://afcollectionaggregatortest.azurewebsites.net/api/v1"
+    : `https://afcollectionaggregatortest.azurewebsites.net/api/v1`
 
 async function initializatonWidget(data){
-    console.log({data})
+    var url = "";
+switch(data.env) {
+    case "test":
+        url = "https://baseonecollectwidgettest.azureedge.net";
+        break;
+    case "staging":
+        url = "https://baseonecollectwidgetstaging.azureedge.net";
+        break;
+    case "prod":
+        url = "http://baseonewidgetpayment.com";
+        break;
+    default:
+        url = "http://baseonewidgetpayment.com"; 
+}
     var iframe = document.createElement('iframe');
   iframe.id = "hidden_iframe";
-  iframe.src = `${window.location.origin}/bankPayment.html?data=${JSON.stringify(data)}&&success=${data.onSuccess}&&failure=${data.onFailure}`;
+  iframe.src = `${url}/bankPayment.html?data=${JSON.stringify(data)}&&success=${data.onSuccess}&&failure=${data.onFailure}`;
   iframe.style.width = "100%";
     iframe.style.height = "100%";
   iframe.style.top = "0";
@@ -24,7 +41,6 @@ async function initializatonWidget(data){
 function closeWidget(){
     var url = new URL(window.location.href);
             var c = url.searchParams.get("data");
-            console.log(JSON.parse(c).callackUrl);
     window.open(JSON.parse(c).url||document.referrer,'_parent','');
     // window.open(document.referrer,'_parent','');
  }
