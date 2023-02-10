@@ -11,7 +11,7 @@ window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf
     : `https://afcollectionaggregatortest.azurewebsites.net/api/v1`
     // : `${window.env?.baseApiUrl}/api/v1`
 
-    console.log({windowEnv: window.env})
+    console.log({windowEnv2: window.env})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
