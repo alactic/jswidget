@@ -20,7 +20,7 @@ switch(window.location.origin) {
     default:
         console.log("url")
 }
-    console.log({windowEnv3: window})
+    console.log({windowEnv4: window})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
