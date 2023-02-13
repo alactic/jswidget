@@ -7,20 +7,16 @@ var cardAmount;
 var transferAmount;
 var BaseApiUrl = "";
 
-console.log({location: window.location.origin})
-switch(window.location.origin) {
-    case window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('baseonecollectwidgettest') >0:
+console.log({location: window.location.origin.indexOf('baseonecollectwidgettest')})
+    if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
         BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
-        break;
-    case window.location.origin.indexOf('baseonecollectwidgetstaging') >0:
+    }else if(
+     window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
         BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/api/v1";
-        break;
-    case window.location.origin.indexOf('baseonewidgetpayment') >0:
+     } else if(window.location.origin.indexOf('baseonewidgetpayment') > -1){
         BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/api/v1";
-        break;
-    default:
-        console.log("url2")
-}
+     }
+
     console.log({windowEnv6: window, BaseApiUrl})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"

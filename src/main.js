@@ -5,22 +5,19 @@ window["closePaymentWidget"] = closeWidget;
 const domain = document.referrer;
 
 const supportedAPI = ['init', 'message']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
-var url =
-window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('test') >0
-    ? "https://afcollectionaggregatortest.azurewebsites.net/api/v1"
-    : `https://afcollectionaggregatortest.azurewebsites.net/api/v1`
 
 async function initializatonWidget(data){
     var url = "";
 switch(data.env) {
     case "test":
+        // url = "http://localhost:8080";
         url = "https://baseonecollectwidgettest.azureedge.net";
         break;
     case "staging":
         url = "https://baseonecollectwidgetstaging.azureedge.net";
         break;
     case "prod":
-        url = "http://baseonewidgetpayment.com";
+        url = "httpss://baseonewidgetpayment.com";
         break;
     default:
         url = "http://baseonewidgetpayment.com"; 
