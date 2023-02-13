@@ -7,7 +7,7 @@ var cardAmount;
 var transferAmount;
 var BaseApiUrl = "";
 
-console.log({baseurl: window.location.origin})
+console.log({location: window.location.origin})
 switch(window.location.origin) {
     case window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('baseonecollectwidgettest') >0:
         BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
@@ -21,7 +21,7 @@ switch(window.location.origin) {
     default:
         console.log("url2")
 }
-    console.log({windowEnv4: window})
+    console.log({windowEnv5: window, BaseApiUrl})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
