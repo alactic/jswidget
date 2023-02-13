@@ -19,7 +19,7 @@ switch(window.location.origin) {
         BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/api/v1";
         break;
     default:
-        console.log("url")
+        console.log("url2")
 }
     console.log({windowEnv4: window})
     function errorMessage(message){
