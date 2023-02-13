@@ -21,7 +21,7 @@ switch(window.location.origin) {
     default:
         console.log("url2")
 }
-    console.log({windowEnv5: window, BaseApiUrl})
+    console.log({windowEnv6: window, BaseApiUrl})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
