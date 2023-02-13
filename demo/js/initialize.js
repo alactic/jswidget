@@ -9,10 +9,10 @@ var BaseApiUrl = "";
 
 console.log({baseurl: window.location.origin})
 switch(window.location.origin) {
-    case window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('test') >0:
+    case window.location.origin.indexOf('localhost') >0 || window.location.origin.indexOf('baseonecollectwidgettest') >0:
         BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
         break;
-    case window.location.origin.indexOf('staging') >0:
+    case window.location.origin.indexOf('baseonecollectwidgetstaging') >0:
         BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/api/v1";
         break;
     case window.location.origin.indexOf('baseonewidgetpayment') >0:
