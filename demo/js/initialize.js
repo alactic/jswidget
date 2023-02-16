@@ -13,7 +13,7 @@ console.log({location: window.location.origin.indexOf('baseonecollectwidgettest'
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
         BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/api/v1";
-     } else if(window.location.origin.indexOf('baseonewidgetpayment') > -1){
+     } else if(window.location.origin.indexOf('cdn.baseone.co') > -1){
         BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/api/v1";
      }
 
