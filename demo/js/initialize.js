@@ -17,7 +17,7 @@ console.log({location: window.location.origin.indexOf('baseonecollectwidgettest'
         BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/api/v1";
      }
 
-    console.log({windowEnv6: window, BaseApiUrl})
+    console.log({windowEnv7: window, BaseApiUrl})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"

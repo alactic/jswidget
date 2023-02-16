@@ -9,7 +9,7 @@ module.exports = (env) => {
     return [{
         entry: './src/main.js',
         output: {
-            filename: 'widget.js',
+            filename: 'collect/v1/inline.js',
             path: path.resolve(bundleOutputDir),
         },
         devServer: {
