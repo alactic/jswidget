@@ -158,7 +158,10 @@
     animation: spin 1s linear infinite;
   }
 
-  #c_number_error, #c_expiry_error, #c_cvv_error, #c_pin_error{
+  #kes_pay {
+      margin-top: 120px;
+  }
+  #c_number_error, #c_expiry_error, #c_cvv_error, #c_pin_error, #c_acct_error{
       color: #dc3545;
       font-family: 'Roboto', sans-serif;
     font-style: normal;

@@ -61,6 +61,14 @@ function c_cvv_format(){
     )
     document.getElementById("c_cvv").value = v;    
 }
+function c_kes_acct_format(){
+    document.getElementById("c_acct_error").style.display = "none";
+    const value = document.getElementById("c_acct").value;
+    var v = value.replace(
+        /[^0-9]/g, '' // To allow only numbers
+    )
+    document.getElementById("c_acct").value = v;    
+}
 
 function c_pin_format(){
     document.getElementById("c_pin_error").style.display = "none";

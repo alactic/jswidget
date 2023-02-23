@@ -7,39 +7,53 @@ function makeTransaction(type){
     delete payload['url'];
 
     if(type === "card"){
-        let validInput = false
-        const chargeParameter = {
-        "cardNumber": document.getElementById("c_number").value,
-        "cardPin": document.getElementById("c_pin").value,
-        "cardCvv": document.getElementById("c_cvv").value,
-        "cardExpiredYear": document.getElementById("c_expiry").value === ""? "":"20"+ document.getElementById("c_expiry").value.split('/')[1],
-        "cardExpiredMonth": document.getElementById("c_expiry").value.split('/')[0]
-       }
-        console.log({chargeParameter})
-        const {cardCvv, cardNumber, cardPin, cardExpiredMonth} = chargeParameter;
-       
-        if(cardNumber ==="") {
-            validInput = true;
-            document.getElementById("c_number_error").style.display = "block";
+            let validInput = false
+            const chargeParameter = {
+            "cardNumber": document.getElementById("c_number").value,
+            "cardPin": document.getElementById("c_pin").value,
+            "cardCvv": document.getElementById("c_cvv").value,
+            "cardExpiredYear": document.getElementById("c_expiry").value === ""? "":"20"+ document.getElementById("c_expiry").value.split('/')[1],
+            "cardExpiredMonth": document.getElementById("c_expiry").value.split('/')[0]
         }
-        if(cardPin === "") {
-            validInput = true;
-            document.getElementById("c_pin_error").style.display = "block";
-        }
-        if(cardExpiredMonth === "") {
-            validInput = true;
-            document.getElementById("c_expiry_error").style.display = "block";
-        }
-        if(cardCvv.length !== 3) {
-            validInput = true;
-            document.getElementById("c_cvv_error").style.display = "block";
-        }
-        if(validInput) {
-            return
-        }
-        totalAmount = cardAmount
-        payload["chargeParameter"] = chargeParameter;  
-         document.getElementById("atm-card-container-iitg33405-fgti594").style.display="none";
+            const {cardCvv, cardNumber, cardPin, cardExpiredMonth} = chargeParameter; 
+            if(cardNumber ==="") {
+                validInput = true;
+                document.getElementById("c_number_error").style.display = "block";
+            }
+            if(cardPin === "") {
+                validInput = true;
+                document.getElementById("c_pin_error").style.display = "block";
+            }
+            if(cardExpiredMonth === "") {
+                validInput = true;
+                document.getElementById("c_expiry_error").style.display = "block";
+            }
+            if(cardCvv.length !== 3) {
+                validInput = true;
+                document.getElementById("c_cvv_error").style.display = "block";
+            }
+            if(validInput) {
+                return
+            }
+            totalAmount = cardAmount
+            payload["chargeParameter"] = chargeParameter;  
+            document.getElementById("atm-card-container-iitg33405-fgti594").style.display="none";
+        }else if(type === "kes"){
+            let validInput = false
+            const chargeParameter = {
+              "amount": document.getElementById("c_acct").value,
+             }
+            const {amount} = chargeParameter; 
+            if(amount ==="") {
+                validInput = true;
+                document.getElementById("c_acct_error").style.display = "block";
+            }
+            if(validInput) {
+                return
+            }
+            totalAmount = cardAmount
+            payload["chargeParameter"] = chargeParameter;  
+            document.getElementById("atm-card-container-iitg33405-fgti594").style.display="none";
         }else {
             totalAmount = transferAmount
             payload["chargeParameter"] = {};    
@@ -49,6 +63,7 @@ function makeTransaction(type){
         document.getElementById("widget-payment-container").style.display="flex";
         document.getElementById("transaction-loading-container-fgti594").style.display="flex";
         document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'none';
+        document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'none';
         fetch(`${BaseApiUrl}/payment/charge`, {
         method: 'POST',
         headers: {
@@ -60,7 +75,7 @@ function makeTransaction(type){
         })
         .then(response => response.json())
         .then(res => {
-        const {BankName, AccountNumber, ProviderMessage, ExpiryTime} = res.responseData
+        const {BankName, AccountNumber, ProviderMessage, ExpiryTime} = res.responseData||{}
         if(!res.requestSuccessful){
             document.getElementById("transaction-message-fgti594").style.display="flex"
             document.getElementById("transaction-items").style.display="none"
