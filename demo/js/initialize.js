@@ -36,9 +36,9 @@ async function initialise() {
     document.getElementById("logo").src= imageUrl;
     document.getElementById("logo6").src= imageUrl;
     document.getElementsByClassName("logo-icon")[0].src= imageUrl;
-    if(channel.toLowerCase() === "transfer") {
+    if(channel && channel.toLowerCase() === "transfer") {
         document.getElementById("card").style.display = "none"
-    }else if(channel.toLowerCase() === "card") {
+    }else if(channel && channel.toLowerCase() === "cards") {
         document.getElementById("transfer").style.display = "none"
     }
     fetch(`${BaseApiUrl}/payment/config`, {
@@ -72,10 +72,10 @@ async function initialise() {
     document.getElementById("transaction-loading-container-fgti594").style.display="none"
     }).catch(error => {
         console.log({error})
-        document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
-    document.getElementById("transaction-loading-container-fgti594").style.display="none"
-    document.getElementById("kes_pay").innerHTML = `Pay ${clientAmount} ${currency}`
-    document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
+    //     document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
+    // document.getElementById("transaction-loading-container-fgti594").style.display="none"
+    // document.getElementById("kes_pay").innerHTML = `Pay ${clientAmount} ${currency}`
+    // document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
 
         
         // errorMessage("Transaction failed")

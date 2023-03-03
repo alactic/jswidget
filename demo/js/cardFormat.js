@@ -7,7 +7,7 @@ function c_format(event) {
     document.getElementById("c_number_error").style.display = "none";
     const value = document.getElementById("c_number").value;
     var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
-    var matches = v.match(/\d{4,16}/g);
+    var matches = v.match(/\d{4,19}/g);
     var match = matches && matches[0] || ''
     var parts = []
 

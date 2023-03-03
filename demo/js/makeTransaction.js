@@ -1,15 +1,15 @@
 function makeTransaction(type){
-    const payload =  {...dataPayload};
+    const payload =  {...dataPayload, channel: type};
     let totalAmount = 0;
     payload["transactionMeta"] = {};
     delete payload['imageUrl']
     delete payload['publicKey']
     delete payload['url'];
 
-    if(type === "card"){
+    if(type === "cards"){
             let validInput = false
             const chargeParameter = {
-            "cardNumber": document.getElementById("c_number").value,
+            "cardNumber": document.getElementById("c_number").value.split(" ").join(''),
             "cardPin": document.getElementById("c_pin").value,
             "cardCvv": document.getElementById("c_cvv").value,
             "cardExpiredYear": document.getElementById("c_expiry").value === ""? "":"20"+ document.getElementById("c_expiry").value.split('/')[1],
