@@ -17,7 +17,7 @@ switch(data.env) {
         url = "https://baseonecollectwidgetstaging.azureedge.net";
         break;
     case "prod":
-        url = "httpss://baseonewidgetpayment.com";
+        url = "https://baseonewidgetpayment.com";
         break;
     default:
         url = "http://baseonewidgetpayment.com"; 

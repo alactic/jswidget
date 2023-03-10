@@ -8,6 +8,7 @@ var transferAmount;
 var BaseApiUrl = "";
 
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
+        // BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/api/v1";
         BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
@@ -16,7 +17,6 @@ var BaseApiUrl = "";
         BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/api/v1";
      }
 
-    console.log({windowEnv7: window, BaseApiUrl})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
@@ -52,7 +52,6 @@ async function initialise() {
     })
     .then(response => response.json())
     .then(res => {
-        console.log({response: res.requestSuccessful})
     if(!res.requestSuccessful){
         errorMessage(res.message)
      }else{

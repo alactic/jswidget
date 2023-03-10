@@ -1,5 +1,5 @@
 function makeTransaction(type){
-    const payload =  {...dataPayload, channel: type};
+    const payload =  {...dataPayload, channel: type, amount: cardAmount};
     let totalAmount = 0;
     payload["transactionMeta"] = {};
     delete payload['imageUrl']
@@ -41,7 +41,8 @@ function makeTransaction(type){
         }else if(type === "kes"){
             let validInput = false
             const chargeParameter = {
-              "amount": document.getElementById("c_acct").value,
+            //   "amount": document.getElementById("c_acct").value,
+              "amount": cardAmount,
              }
             const {amount} = chargeParameter; 
             if(amount ==="") {
@@ -83,7 +84,7 @@ function makeTransaction(type){
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message
         }else{
             reference = res.responseData.TransactionRefernce;
-            if(type === "card"){
+            if(type === "cards"){
               document.getElementById( 'otp-container-iitg33405-fgti594' ).style.display = 'flex';
             }else{
                 document.getElementsByClassName( 'bank-transfer-container-iitg33405-fgti594' )[0].style.display = 'flex';
