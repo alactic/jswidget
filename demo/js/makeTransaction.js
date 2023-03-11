@@ -1,5 +1,5 @@
 function makeTransaction(type){
-    const payload =  {...dataPayload, channel: type, amount: cardAmount};
+    const payload =  {...dataPayload, channel: type};
     let totalAmount = 0;
     payload["transactionMeta"] = {};
     delete payload['imageUrl']

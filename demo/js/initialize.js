@@ -52,12 +52,13 @@ async function initialise() {
     })
     .then(response => response.json())
     .then(res => {
+        console.log({response: res.requestSuccessful})
     if(!res.requestSuccessful){
         errorMessage(res.message)
      }else{
         const {Cards, Transfer} = res.responseData.priceingConfigs
-        cardAmount = configAmount(Cards);
-        transferAmount = configAmount(Transfer);
+        cardAmount = Cards?configAmount(Cards):'';
+        transferAmount = Transfer?configAmount(Transfer):"";
         dataPayload['initReference'] = res.responseData.reference;
         if(currency.toLowerCase === "kes"){
             document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
