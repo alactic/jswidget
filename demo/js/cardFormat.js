@@ -80,7 +80,7 @@ function c_pin_format(){
 }
 
 function c_otp_format(type) {
-    if(type < 4 && document.getElementById(`c_otp${type}`).value !=="") {
+    if(type < 6 && document.getElementById(`c_otp${type}`).value !=="") {
         document.getElementById(`c_otp${type+1}`).focus();
     }
 }
