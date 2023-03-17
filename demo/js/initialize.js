@@ -7,9 +7,10 @@ var cardAmount;
 var transferAmount;
 var BaseApiUrl = "";
 
+
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
-        // BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/api/v1";
-        BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
+        BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/api/v1";
+        // BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
         BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/api/v1";
@@ -35,6 +36,7 @@ async function initialise() {
     channel = dataPayload.channel;
     document.getElementById("logo").src= imageUrl;
     document.getElementById("logo6").src= imageUrl;
+    document.getElementById("card-pin").style.display = "none";
     document.getElementsByClassName("logo-icon")[0].src= imageUrl;
     if(channel && channel.toLowerCase() === "transfer") {
         document.getElementById("card").style.display = "none"

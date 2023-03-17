@@ -1,3 +1,5 @@
+ 
+
 function makeTransaction(type){
     const payload =  {...dataPayload, channel: type};
     let totalAmount = 0;
@@ -20,7 +22,7 @@ function makeTransaction(type){
                 validInput = true;
                 document.getElementById("c_number_error").style.display = "block";
             }
-            if(cardPin === "") {
+            if(cardPin === "" && cardType !=="visa") {
                 validInput = true;
                 document.getElementById("c_pin_error").style.display = "block";
             }
