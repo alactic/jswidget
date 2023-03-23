@@ -10,7 +10,7 @@ function makeTransaction(type){
 
     if(type === "cards"){
             let validInput = false
-            const chargeParameter = {
+        const chargeParameter = {
             "cardNumber": document.getElementById("c_number").value.split(" ").join(''),
             "cardPin": document.getElementById("c_pin").value,
             "cardCvv": document.getElementById("c_cvv").value,
@@ -87,7 +87,6 @@ function makeTransaction(type){
         }else{
             reference = res.responseData.TransactionRefernce;
             if(type === "cards" && cardType ==="visa"){
-              console.log({res: res.responseData})
             document.getElementById("transaction-items").style.display="none"
 
               const {MD, PostUrl, jwt} = res.responseData.FormData
@@ -113,7 +112,6 @@ function makeTransaction(type){
             }                    
         }
    }).catch(error => {
-       console.log({error});
    })
     // document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'none';
     // document.getElementById( 'bank-transfer-iitg33405-fgti594' ).style.display = 'flex';

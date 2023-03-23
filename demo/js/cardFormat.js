@@ -14,7 +14,6 @@ window.c_format =function(event) {
 
     const masterFormat = ["22", "23", "24", "25", "26", "27", "51", "52", "54", "55", "60", "63", "67", "97" ];
     const xx = value.substring(0, 2);      
-    console.log({value, visa: value[0]})       
     if (masterFormat.indexOf(xx) > -1){
         cardType = "master";
         document.getElementById("card-pin").style.display = "block";
@@ -32,7 +31,6 @@ window.c_format =function(event) {
         }
         document.getElementById("card-pin").style.display = "block";
     }
-    console.log({cardType})
     
     for (i=0, len=match.length; i<len; i+=4) {
         parts.push(match.substring(i, i+4))
