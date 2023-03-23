@@ -25,7 +25,7 @@ var BaseApiUrl = "";
     document.getElementsByClassName("message-desc")[0].innerHTML=message;
     document.getElementById("transaction-loading-container-fgti594").style.display="none"
 }
-async function initialise() {
+window.initialise = async function() {
     var url = new URL(window.location.href);
     var urlData = url.searchParams.get("data");
     dataPayload = JSON.parse(urlData);
