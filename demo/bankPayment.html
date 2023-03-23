@@ -110,7 +110,7 @@
                 <div>
                     <label>Card Number</label>
                     <div class="input-field">
-                        <input placeholder="0000 0000 0000 0000" id="c_number" onkeyup="return c_format(event)"/>
+                        <input placeholder="0000 0000 0000 0000"  id="c_number" onkeypress="return c_format(event)"/>
                         <div id="c_number_error">Valid Card Number is requred</div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     <div class="cvv">
                         <label>CVV</label>
                         <div class="input-field">
-                            <input placeholder="CVV" id="c_cvv" onkeyup="c_cvv_format(event)" maxlength=3/>
+                            <input placeholder="CVV" id="c_cvv" type="number" onkeyup="c_cvv_format(event)" maxlength=3/>
                             <div id="c_cvv_error">Valid CVV is requred</div>
                         </div>
                     </div>
