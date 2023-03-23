@@ -1,4 +1,3 @@
-import { show } from './views/message'
 window["baseoneCollect"] = initializatonWidget;
 window["closePaymentWidget"] = closeWidget;
 // window["hid"] = closeWidget;
@@ -82,7 +81,6 @@ function apiHandler(api, params) {
     switch (api) {
         // TODO: add API implementation
         case 'message':
-            show(params);
             break;
         default:
             console.warn(`No handler defined for ${api}`);

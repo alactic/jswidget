@@ -15,6 +15,7 @@ module.exports = (env) => {
         devServer: {
             contentBase: bundleOutputDir
         },
+        plugins: [new copyWebpackPlugin([{ from: 'demo/' }])],
         module: {
             rules: [
                 { test: /\.html$/i, use: 'html-loader' },
