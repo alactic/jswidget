@@ -9,8 +9,8 @@ async function initializatonWidget(data){
     var url = "";
 switch(data.env) {
     case "test":
-        // url = "http://localhost:8080";
-        url = "https://baseonecollectwidgettest.azureedge.net";
+        url = "http://localhost:8080";
+        // url = "https://baseonecollectwidgettest.azureedge.net";
         break;
     case "staging":
         url = "https://baseonecollectwidgetstaging.azureedge.net";

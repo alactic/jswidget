@@ -67,6 +67,7 @@ function makeTransaction(type){
         document.getElementById("transaction-loading-container-fgti594").style.display="flex";
         document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'none';
         document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'none';
+        document.getElementById( 'payment-header' ).style.display = 'none';
         fetch(`${BaseApiUrl}/payment/charge`, {
         method: 'POST',
         headers: {
@@ -83,7 +84,7 @@ function makeTransaction(type){
             document.getElementById("transaction-message-fgti594").style.display="flex"
             document.getElementById("transaction-items").style.display="none"
             document.getElementById("transaction-failed-items").style.display="flex"
-            document.getElementsByClassName("message-desc")[0].innerHTML=res.message
+            document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
         }else{
             reference = res.responseData.TransactionRefernce;
             if(type === "cards" && cardType ==="visa"){
@@ -97,7 +98,6 @@ function makeTransaction(type){
               form.submit()
             }else if(type === "cards"){
               document.getElementById( 'otp-container-iitg33405-fgti594' ).style.display = 'flex';
-              document.getElementById("transaction-loading-container-fgti594").style.display="none"
             }else{
                 document.getElementsByClassName( 'bank-transfer-container-iitg33405-fgti594' )[0].style.display = 'flex';
                 document.getElementsByClassName("amount")[0].innerHTML=totalAmount
@@ -108,10 +108,13 @@ function makeTransaction(type){
             document.getElementById("account-number").innerHTML=AccountNumber
             document.getElementById("expiryTime").innerHTML=ExpiryTime
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
-            document.getElementById("transaction-loading-container-fgti594").style.display="none"
             }                    
         }
+        if((!res.requestSuccessful && cardType ==="visa")||cardType !=="visa") {
+            document.getElementById("transaction-loading-container-fgti594").style.display="none"
+        }
    }).catch(error => {
+    document.getElementById("transaction-loading-container-fgti594").style.display="none"
    })
     // document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'none';
     // document.getElementById( 'bank-transfer-iitg33405-fgti594' ).style.display = 'flex';
