@@ -1,6 +1,6 @@
 var cardType = "master";
 
-function c_format(event) {
+window.c_format =function(event) {
     var code = (event.which) ? event.which : event.keyCode;
     if ((code < 48 || code > 57) && (code > 31)) {
         return false;
