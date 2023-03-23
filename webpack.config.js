@@ -15,9 +15,7 @@ module.exports = (env) => {
         devServer: {
             contentBase: bundleOutputDir
         },
-        plugins: isDevBuild
-            ? [new webpack.SourceMapDevToolPlugin(), new copyWebpackPlugin([{ from: 'demo/' }])]
-            : [new webpack.optimize.UglifyJsPlugin()],
+        plugins: [new webpack.SourceMapDevToolPlugin(), new copyWebpackPlugin([{ from: 'demo/' }])],
         module: {
             rules: [
                 { test: /\.html$/i, use: 'html-loader' },
