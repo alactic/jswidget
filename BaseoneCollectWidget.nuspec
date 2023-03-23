@@ -16,7 +16,7 @@
 
   <files> 
 
-        <file src="demo\**" target="" />  
+        <file src="dist\**" target="" />  
         <file src="*" exclude="*.nuspec" /> 
 
   </files>  
