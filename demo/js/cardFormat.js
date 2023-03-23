@@ -1,3 +1,4 @@
+var cardType = "master";
 
 function c_format(event) {
     var code = (event.which) ? event.which : event.keyCode;
@@ -7,10 +8,32 @@ function c_format(event) {
     document.getElementById("c_number_error").style.display = "none";
     const value = document.getElementById("c_number").value;
     var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
-    var matches = v.match(/\d{4,16}/g);
+    var matches = v.match(/\d{4,19}/g);
     var match = matches && matches[0] || ''
     var parts = []
 
+    const masterFormat = ["22", "23", "24", "25", "26", "27", "51", "52", "54", "55", "60", "63", "67", "97" ];
+    const xx = value.substring(0, 2);      
+    console.log({value, visa: value[0]})       
+    if (masterFormat.indexOf(xx) > -1){
+        cardType = "master";
+        document.getElementById("card-pin").style.display = "block";
+    }else if(value.length > 0 && value[0] === "4") {
+        cardType = "visa";
+        document.getElementById("card-pin").style.display = "none";
+    } else if(v.length > 6) {
+        const first6CardDigit = Number(v.substring(0, 6));
+        var r1 = 506099;
+        var r2 = 506198;
+        var r3 = 650002;
+        var r4 = 650027;             
+        if ((first6CardDigit >= r1 && first6CardDigit <= r2) || (first6CardDigit >= r3 && first6CardDigit <= r4 ) || (first6CardDigit == 628051)){
+            cardType = "Verve"
+        }
+        document.getElementById("card-pin").style.display = "block";
+    }
+    console.log({cardType})
+    
     for (i=0, len=match.length; i<len; i+=4) {
         parts.push(match.substring(i, i+4))
     }
@@ -80,7 +103,7 @@ function c_pin_format(){
 }
 
 function c_otp_format(type) {
-    if(type < 4 && document.getElementById(`c_otp${type}`).value !=="") {
+    if(type < 6 && document.getElementById(`c_otp${type}`).value !=="") {
         document.getElementById(`c_otp${type+1}`).focus();
     }
 }

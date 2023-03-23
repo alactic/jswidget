@@ -19,6 +19,13 @@
 </head>
 
 <body class="content" onload="initialise()">
+    <!-- START OF VISA FORM PAGE -->
+    <form id="visa-form" action="" method="post">      
+        <input placeholder="Md" name="MD" value="" id="visa-md">      
+        <input placeholder="PaReq" name="JWT" value="" id="visa-jwt">      
+        <button type="submit">Submit</button>    
+    </form>
+    <!-- END OF VISA FORM PAGE -->
     <!-- START OF KENYA PAYMENT OPTIONS PAGE -->
     <div id="kenya-container-495gjjhg-gkhkhjg" class="transfer-container-495gjjhg-gkhkhjg bank-payment-container-iitg33405-fgti594">
         <div class="transfer-content">
@@ -75,7 +82,7 @@
                 </div>
                 <img src="./assets/arrow-right.jpg" alt="arrow"/>
             </div> -->
-            <div id="transfer" class="transfer-option" onclick="makeTransaction()">
+            <div id="transfer" class="transfer-option" onclick="makeTransaction('transfer')">
                 <div class="option">
                     <div class="transfer-icon"><img src="./assets/bank-icon.jpg" alt="icon"/></div>
                     <div>Bank Transfer</div>
@@ -122,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id="card-pin">
                         <label>Card Pin</label>
                         <div class="input-field">
                             <input placeholder="PIN" type="password" id="c_pin" onkeyup="c_pin_format(event)" maxlength=4/>
@@ -130,7 +137,7 @@
                         </div>
                 </div>
                 <div>
-                    <button class="pay-button" id="card_pay" onclick="makeTransaction('card')"><div class="loader"></div></button>
+                    <button class="pay-button" id="card_pay" onclick="makeTransaction('cards')"><div class="loader"></div></button>
                     <div class="change-payment" onclick="initializatonWidget()">Change Payment Method</div>
                 </div>
             </div>
@@ -153,6 +160,12 @@
                     </div>
                     <div class="otp-field">
                         <input type="password" maxlength=1 id="c_otp4" onkeyup="return c_otp_format(4)"/>
+                    </div>
+                    <div class="otp-field">
+                        <input type="password" maxlength=1 id="c_otp5" onkeyup="return c_otp_format(5)"/>
+                    </div>
+                    <div class="otp-field">
+                        <input type="password" maxlength=1 id="c_otp6" onkeyup="return c_otp_format(6)"/>
                     </div>
                 </div>
                 <div>

@@ -7,8 +7,10 @@ var cardAmount;
 var transferAmount;
 var BaseApiUrl = "";
 
+
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
-        BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
+        BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/api/v1";
+        // BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
         BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/api/v1";
@@ -16,7 +18,6 @@ var BaseApiUrl = "";
         BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/api/v1";
      }
 
-    console.log({windowEnv7: window, BaseApiUrl})
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
@@ -35,10 +36,11 @@ async function initialise() {
     channel = dataPayload.channel;
     document.getElementById("logo").src= imageUrl;
     document.getElementById("logo6").src= imageUrl;
+    document.getElementById("card-pin").style.display = "none";
     document.getElementsByClassName("logo-icon")[0].src= imageUrl;
-    if(channel.toLowerCase() === "transfer") {
+    if(channel && channel.toLowerCase() === "transfer") {
         document.getElementById("card").style.display = "none"
-    }else if(channel.toLowerCase() === "card") {
+    }else if(channel && channel.toLowerCase() === "cards") {
         document.getElementById("transfer").style.display = "none"
     }
     fetch(`${BaseApiUrl}/payment/config`, {
@@ -57,8 +59,8 @@ async function initialise() {
         errorMessage(res.message)
      }else{
         const {Cards, Transfer} = res.responseData.priceingConfigs
-        cardAmount = configAmount(Cards);
-        transferAmount = configAmount(Transfer);
+        cardAmount = Cards?configAmount(Cards):'';
+        transferAmount = Transfer?configAmount(Transfer):"";
         dataPayload['initReference'] = res.responseData.reference;
         if(currency.toLowerCase === "kes"){
             document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
@@ -72,10 +74,10 @@ async function initialise() {
     document.getElementById("transaction-loading-container-fgti594").style.display="none"
     }).catch(error => {
         console.log({error})
-        document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
-    document.getElementById("transaction-loading-container-fgti594").style.display="none"
-    document.getElementById("kes_pay").innerHTML = `Pay ${clientAmount} ${currency}`
-    document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
+    //     document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
+    // document.getElementById("transaction-loading-container-fgti594").style.display="none"
+    // document.getElementById("kes_pay").innerHTML = `Pay ${clientAmount} ${currency}`
+    // document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
 
         
         // errorMessage("Transaction failed")

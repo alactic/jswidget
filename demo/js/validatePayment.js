@@ -2,10 +2,10 @@ function validatePayment(type){
     let validateUrl = `${BaseApiUrl}/payment/validate?transactionReference=${reference}`
     if(type === "card") {
         let cardPin = "";
-        [1,2,3,4].forEach(val=>{
+        [1,2,3,4, 5,6].forEach(val=>{
             cardPin = cardPin + document.getElementById(`c_otp${val}`).value
         });
-        if(cardPin.length !== 4) {
+        if(cardPin.length !== 6) {
             return
         }
         validateUrl = validateUrl+ `&otp=${cardPin}`

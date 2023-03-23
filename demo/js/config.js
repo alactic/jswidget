@@ -7,6 +7,6 @@ function configAmount(option) {
         fee = value
     }
     const totalAmount = clientAmount + fee;
-    document.getElementById("transaction-title").innerHTML = `How would you like to pay ${currency} ${totalAmount}?`
+    document.getElementById("transaction-title").innerHTML = `How would you like to pay ${currency} ${totalAmount.toFixed(2)}?`
     return totalAmount
 }

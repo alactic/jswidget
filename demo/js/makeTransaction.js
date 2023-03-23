@@ -1,15 +1,17 @@
+ 
+
 function makeTransaction(type){
-    const payload =  {...dataPayload};
+    const payload =  {...dataPayload, channel: type, redirectUrl:dataPayload['url'] };
     let totalAmount = 0;
     payload["transactionMeta"] = {};
     delete payload['imageUrl']
     delete payload['publicKey']
     delete payload['url'];
 
-    if(type === "card"){
+    if(type === "cards"){
             let validInput = false
             const chargeParameter = {
-            "cardNumber": document.getElementById("c_number").value,
+            "cardNumber": document.getElementById("c_number").value.split(" ").join(''),
             "cardPin": document.getElementById("c_pin").value,
             "cardCvv": document.getElementById("c_cvv").value,
             "cardExpiredYear": document.getElementById("c_expiry").value === ""? "":"20"+ document.getElementById("c_expiry").value.split('/')[1],
@@ -20,7 +22,7 @@ function makeTransaction(type){
                 validInput = true;
                 document.getElementById("c_number_error").style.display = "block";
             }
-            if(cardPin === "") {
+            if(cardPin === "" && cardType !=="visa") {
                 validInput = true;
                 document.getElementById("c_pin_error").style.display = "block";
             }
@@ -41,7 +43,8 @@ function makeTransaction(type){
         }else if(type === "kes"){
             let validInput = false
             const chargeParameter = {
-              "amount": document.getElementById("c_acct").value,
+            //   "amount": document.getElementById("c_acct").value,
+              "amount": cardAmount,
              }
             const {amount} = chargeParameter; 
             if(amount ==="") {
@@ -83,8 +86,19 @@ function makeTransaction(type){
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message
         }else{
             reference = res.responseData.TransactionRefernce;
-            if(type === "card"){
+            if(type === "cards" && cardType ==="visa"){
+              console.log({res: res.responseData})
+            document.getElementById("transaction-items").style.display="none"
+
+              const {MD, PostUrl, jwt} = res.responseData.FormData
+              document.getElementById( 'visa-md' ).value = MD;
+              document.getElementById( 'visa-jwt' ).value = jwt;
+              document.getElementById( 'visa-form' ).action = PostUrl;
+              const form = document.getElementById("visa-form");
+              form.submit()
+            }else if(type === "cards"){
               document.getElementById( 'otp-container-iitg33405-fgti594' ).style.display = 'flex';
+              document.getElementById("transaction-loading-container-fgti594").style.display="none"
             }else{
                 document.getElementsByClassName( 'bank-transfer-container-iitg33405-fgti594' )[0].style.display = 'flex';
                 document.getElementsByClassName("amount")[0].innerHTML=totalAmount
@@ -95,9 +109,9 @@ function makeTransaction(type){
             document.getElementById("account-number").innerHTML=AccountNumber
             document.getElementById("expiryTime").innerHTML=ExpiryTime
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
+            document.getElementById("transaction-loading-container-fgti594").style.display="none"
             }                    
         }
-    document.getElementById("transaction-loading-container-fgti594").style.display="none"
    }).catch(error => {
        console.log({error});
    })
