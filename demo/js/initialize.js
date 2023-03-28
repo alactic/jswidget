@@ -9,13 +9,13 @@ var BaseApiUrl = "";
 
 
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
-        BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/api/v1";
-        // BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/api/v1";
+        BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
+        // BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/v1";
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
-        BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/api/v1";
+        BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/v1";
      } else if(window.location.origin.indexOf('cdn.baseone.co') > -1){
-        BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/api/v1";
+        BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/v1";
      }
 
     function errorMessage(message){
