@@ -9,7 +9,7 @@ var BaseApiUrl = "";
 
 
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
-        BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
+        BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/v1";
         // BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/v1";
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
@@ -62,10 +62,17 @@ window.initialise = async function() {
         cardAmount = Cards?configAmount(Cards):'';
         transferAmount = Transfer?configAmount(Transfer):"";
         dataPayload['initReference'] = res.responseData.reference;
-        if(currency.toLowerCase === "kes"){
+        console.log({currency: currency.toLowerCase()})
+        if(currency.toLowerCase() === "kes"){
             document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
             document.getElementById("kes_pay").innerHTML = `Pay ${cardAmount} ${currency}`;
             document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
+
+            //     document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
+    // document.getElementById("transaction-loading-container-fgti594").style.display="none"
+    // document.getElementById("kes_pay").innerHTML = `Pay ${clientAmount} ${currency}`
+    // document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
+
         }else {
             document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
         }
@@ -74,11 +81,7 @@ window.initialise = async function() {
     document.getElementById("transaction-loading-container-fgti594").style.display="none"
     }).catch(error => {
         console.log({error})
-    //     document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
-    // document.getElementById("transaction-loading-container-fgti594").style.display="none"
-    // document.getElementById("kes_pay").innerHTML = `Pay ${clientAmount} ${currency}`
-    // document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
-
+    
         
         // errorMessage("Transaction failed")
     })            

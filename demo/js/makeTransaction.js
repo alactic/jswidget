@@ -40,12 +40,11 @@ function makeTransaction(type){
             totalAmount = cardAmount
             payload["chargeParameter"] = chargeParameter;  
             document.getElementById("atm-card-container-iitg33405-fgti594").style.display="none";
-        }else if(type === "kes"){
+        }else if(type === "MobileMoney"){
             let validInput = false
             const chargeParameter = {
-            //   "amount": document.getElementById("c_acct").value,
-              "amount": cardAmount,
-             }
+              "MobileNumber": document.getElementById("c_acct").value,
+             }
             const {amount} = chargeParameter; 
             if(amount ==="") {
                 validInput = true;
@@ -87,7 +86,10 @@ function makeTransaction(type){
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
         }else{
             reference = res.responseData.TransactionRefernce;
-            if(type === "cards" && cardType ==="visa"){
+            if(type === "MobileMoney"){
+              validatePayment();
+              return
+            }else if(type === "cards" && cardType ==="visa"){
             document.getElementById("transaction-items").style.display="none"
 
               const {MD, PostUrl, jwt} = res.responseData.FormData
