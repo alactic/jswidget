@@ -9,7 +9,7 @@ var BaseApiUrl = "";
 
 
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
-        BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/v1";
+        BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
         // BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/v1";
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
