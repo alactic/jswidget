@@ -8,11 +8,16 @@ const supportedAPI = ['init', 'message']; // enlist all methods supported by API
 async function initializatonWidget(data){
     var url = "";
 switch(data.env) {
+    case "localhost":
+        url = "http://localhost:8080";
+        break;
     case "test":
-        // url = "http://localhost:8080";
         url = "https://baseonecollectwidgettest.azureedge.net";
         break;
     case "staging":
+        url = "https://baseonecollectwidgetstaging.azureedge.net";
+        break;
+    case "sandbox":
         url = "https://baseonecollectwidgetstaging.azureedge.net";
         break;
     case "prod":
@@ -21,7 +26,7 @@ switch(data.env) {
     default:
         url = "https://baseonecollectwidgetprod.azureedge.net"; 
 }
-console.log({origin: window.location, url2: url})
+console.log({origin: window.location, url3: url})
 
     var iframe = document.createElement('iframe');
   iframe.id = "hidden_iframe";
