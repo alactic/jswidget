@@ -17,9 +17,9 @@ var BaseApiUrl = "";
      } else if(window.location.origin.indexOf('baseonecollectwidgetprod') > -1){
         BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
      }
-     console.log({BaseApiUrl})
-
+  
     function errorMessage(message){
+        document.getElementById( 'payment-header' ).style.display = 'none';
     document.getElementById("transaction-message-fgti594").style.display="flex"
     document.getElementById("transaction-items").style.display="none"
     document.getElementById("transaction-failed-items").style.display="flex"
@@ -55,9 +55,8 @@ window.initialise = async function() {
     })
     .then(response => response.json())
     .then(res => {
-        console.log({response: res.requestSuccessful})
     if(!res.requestSuccessful){
-        errorMessage(res.message)
+        errorMessage(res.message||res.title||"")
      }else{
         const {Cards, Transfer, MobileMoney} = res.responseData.priceingConfigs
         cardAmount = Cards?configAmount(Cards):'';
@@ -65,7 +64,6 @@ window.initialise = async function() {
         mobileMoneyAmount = MobileMoney?configAmount(MobileMoney):"";
         dataPayload['initReference'] = res.responseData.reference;
         if(currency.toLowerCase() === "kes"){
-            console.log({transferAmount, mobileMoneyAmount})
             document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
             document.getElementById("kes_pay").innerHTML = `Pay ${mobileMoneyAmount} ${currency}`;
             document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${mobileMoneyAmount}?`
