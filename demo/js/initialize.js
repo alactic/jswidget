@@ -7,7 +7,7 @@ var cardAmount;
 var transferAmount;
 var BaseApiUrl = "";
 
-
+console.log({origin: window.location.origin})
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
         // BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
         BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/v1";
