@@ -17,6 +17,7 @@ var BaseApiUrl = "";
      } else if(window.location.origin.indexOf('baseonecollectwidgetprod') > -1){
         BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
      }
+     console.log({BaseApiUrl})
 
     function errorMessage(message){
     document.getElementById("transaction-message-fgti594").style.display="flex"
