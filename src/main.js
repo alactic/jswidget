@@ -19,6 +19,7 @@ if(window.location.origin.indexOf('localhost') > -1){
  } else if(window.location.origin.indexOf('baseonecollectwidgetprod') > -1 || window.location.origin.indexOf('cdn.baseone.co') > -1){
     url = "https://baseonecollectwidgetprod.azureedge.net";
  }
+ console.log({paymenturl: url})
     var iframe = document.createElement('iframe');
   iframe.id = "hidden_iframe";
   iframe.src = `${url}/bankPayment.html?data=${JSON.stringify(data)}&&success=${data.onSuccess}&&failure=${data.onFailure}`;
