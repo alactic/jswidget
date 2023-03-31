@@ -5,9 +5,9 @@ var dataPayload;
 var clientAmount;
 var cardAmount;
 var transferAmount;
+var mobileMoneyAmount;
 var BaseApiUrl = "";
 
-console.log({origin: window.location})
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
         // BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
         BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/v1";
@@ -58,21 +58,16 @@ window.initialise = async function() {
     if(!res.requestSuccessful){
         errorMessage(res.message)
      }else{
-        const {Cards, Transfer} = res.responseData.priceingConfigs
+        const {Cards, Transfer, MobileMoney} = res.responseData.priceingConfigs
         cardAmount = Cards?configAmount(Cards):'';
         transferAmount = Transfer?configAmount(Transfer):"";
+        mobileMoneyAmount = MobileMoney?configAmount(MobileMoney):"";
         dataPayload['initReference'] = res.responseData.reference;
-        console.log({currency: currency.toLowerCase()})
         if(currency.toLowerCase() === "kes"){
+            console.log({transferAmount, mobileMoneyAmount})
             document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
-            document.getElementById("kes_pay").innerHTML = `Pay ${cardAmount} ${currency}`;
-            document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
-
-            //     document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
-    // document.getElementById("transaction-loading-container-fgti594").style.display="none"
-    // document.getElementById("kes_pay").innerHTML = `Pay ${clientAmount} ${currency}`
-    // document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${clientAmount}?`
-
+            document.getElementById("kes_pay").innerHTML = `Pay ${mobileMoneyAmount} ${currency}`;
+            document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${mobileMoneyAmount}?`
         }else {
             document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
         }

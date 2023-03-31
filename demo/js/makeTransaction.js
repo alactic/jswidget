@@ -53,7 +53,7 @@ function makeTransaction(type){
             if(validInput) {
                 return
             }
-            totalAmount = cardAmount
+            totalAmount = transferAmount
             payload["chargeParameter"] = chargeParameter;  
             document.getElementById("atm-card-container-iitg33405-fgti594").style.display="none";
         }else {

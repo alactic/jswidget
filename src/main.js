@@ -7,20 +7,18 @@ const supportedAPI = ['init', 'message']; // enlist all methods supported by API
 
 async function initializatonWidget(data){
     var url = "";
-switch(data.env) {
-    case "test":
-        // url = "http://localhost:8080";
-        url = "https://baseonecollectwidgettest.azureedge.net";
-        break;
-    case "staging":
-        url = "https://baseonecollectwidgetstaging.azureedge.net";
-        break;
-    case "prod":
-        url = "https://baseonewidgetpayment.com";
-        break;
-    default:
-        url = "http://baseonewidgetpayment.com"; 
-}
+console.log({origin2: window.location})
+
+if(window.location.origin.indexOf('localhost') > -1){
+    url = "http://localhost:8080";
+}else if(window.location.origin.indexOf('baseonecollectwidgettest') > -1){
+    url = "https://baseonecollectwidgettest.azureedge.net";
+}else if(
+ window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
+    url = "https://baseonecollectwidgetstaging.azureedge.net";
+ } else if(window.location.origin.indexOf('baseonecollectwidgetprod') > -1 || window.location.origin.indexOf('cdn.baseone.co') > -1){
+    url = "https://baseonecollectwidgetprod.azureedge.net";
+ }
     var iframe = document.createElement('iframe');
   iframe.id = "hidden_iframe";
   iframe.src = `${url}/bankPayment.html?data=${JSON.stringify(data)}&&success=${data.onSuccess}&&failure=${data.onFailure}`;
