@@ -14,7 +14,7 @@ var BaseApiUrl = "";
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
         BaseApiUrl = "https://afcollectionaggregatorstag.azurewebsites.net/v1";
-     } else if(window.location.origin.indexOf('cdn.baseone.co') > -1){
+     } else if(window.location.origin.indexOf('baseonecollectwidgetprod') > -1){
         BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
      }
 

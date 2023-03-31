@@ -7,19 +7,22 @@ const supportedAPI = ['init', 'message']; // enlist all methods supported by API
 
 async function initializatonWidget(data){
     var url = "";
-console.log({origin2: window.location})
+switch(data.env) {
+    case "test":
+        // url = "http://localhost:8080";
+        url = "https://baseonecollectwidgettest.azureedge.net";
+        break;
+    case "staging":
+        url = "https://baseonecollectwidgetstaging.azureedge.net";
+        break;
+    case "prod":
+        url = "https://baseonecollectwidgetprod.azureedge.net";
+        break;
+    default:
+        url = "https://baseonecollectwidgetprod.azureedge.net"; 
+}
+console.log({origin: window.location, url2: url})
 
-if(window.location.origin.indexOf('localhost') > -1){
-    url = "http://localhost:8080";
-}else if(window.location.origin.indexOf('baseonecollectwidgettest') > -1){
-    url = "https://baseonecollectwidgettest.azureedge.net";
-}else if(
- window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
-    url = "https://baseonecollectwidgetstaging.azureedge.net";
- } else if(window.location.origin.indexOf('baseonecollectwidgetprod') > -1 || window.location.origin.indexOf('cdn.baseone.co') > -1){
-    url = "https://baseonecollectwidgetprod.azureedge.net";
- }
- console.log({paymenturl: url})
     var iframe = document.createElement('iframe');
   iframe.id = "hidden_iframe";
   iframe.src = `${url}/bankPayment.html?data=${JSON.stringify(data)}&&success=${data.onSuccess}&&failure=${data.onFailure}`;
