@@ -7,15 +7,15 @@ var cardAmount;
 var transferAmount;
 var BaseApiUrl = "";
 
-console.log({origin: window.location.origin})
+console.log({origin: window.location})
     if(window.location.origin.indexOf('localhost') > -1 || window.location.origin.indexOf('baseonecollectwidgettest') > -1){
         // BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
         BaseApiUrl = "https://afcollectionaggregatortest.azurewebsites.net/v1";
     }else if(
      window.location.origin.indexOf('baseonecollectwidgetstaging') > -1){
-        BaseApiUrl = "https://collectioncardservice-stag.azurewebsites.net/v1";
+        BaseApiUrl = "https://afcollectionaggregatorstag.azurewebsites.net/v1";
      } else if(window.location.origin.indexOf('cdn.baseone.co') > -1){
-        BaseApiUrl = "https://collectioncardservice-prod.azurewebsites.net/v1";
+        BaseApiUrl = "https://afcollectionaggregatorprod.azurewebsites.net/v1";
      }
 
     function errorMessage(message){
