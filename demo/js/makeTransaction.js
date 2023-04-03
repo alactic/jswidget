@@ -19,22 +19,18 @@ function makeTransaction(type){
     
             const {cardCvv, cardNumber, cardPin, cardExpiredMonth} = chargeParameter; 
             if(cardNumber ==="") {
-                console.log(1)
                 validInput = true;
                 document.getElementById("c_number_error").style.display = "block";
             }
             if(cardPin === "" && cardType !=="visa") {
-                console.log(2)
                 validInput = true;
                 document.getElementById("c_pin_error").style.display = "block";
             }
             if(cardExpiredMonth === "") {
-                console.log(3)
                 validInput = true;
                 document.getElementById("c_expiry_error").style.display = "block";
             }
             if(cardCvv.length !== 3) {
-                console.log(4)
                 validInput = true;
                 document.getElementById("c_cvv_error").style.display = "block";
             }
