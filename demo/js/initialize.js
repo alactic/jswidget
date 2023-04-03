@@ -55,6 +55,7 @@ window.initialise = async function() {
     })
     .then(response => response.json())
     .then(res => {
+        console.log({res})
     if(!res.requestSuccessful){
         errorMessage(res.message||res.title||"")
      }else{

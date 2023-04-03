@@ -7,7 +7,6 @@ function makeTransaction(type){
     delete payload['imageUrl']
     delete payload['publicKey']
     delete payload['url'];
-
     if(type === "cards"){
             let validInput = false
         const chargeParameter = {
@@ -17,27 +16,32 @@ function makeTransaction(type){
             "cardExpiredYear": document.getElementById("c_expiry").value === ""? "":"20"+ document.getElementById("c_expiry").value.split('/')[1],
             "cardExpiredMonth": document.getElementById("c_expiry").value.split('/')[0]
         }
+    
             const {cardCvv, cardNumber, cardPin, cardExpiredMonth} = chargeParameter; 
             if(cardNumber ==="") {
+                console.log(1)
                 validInput = true;
                 document.getElementById("c_number_error").style.display = "block";
             }
             if(cardPin === "" && cardType !=="visa") {
+                console.log(2)
                 validInput = true;
                 document.getElementById("c_pin_error").style.display = "block";
             }
             if(cardExpiredMonth === "") {
+                console.log(3)
                 validInput = true;
                 document.getElementById("c_expiry_error").style.display = "block";
             }
             if(cardCvv.length !== 3) {
+                console.log(4)
                 validInput = true;
                 document.getElementById("c_cvv_error").style.display = "block";
             }
             if(validInput) {
                 return
             }
-            totalAmount = cardAmount
+            totalAmount = cardAmount;
             payload["chargeParameter"] = chargeParameter;  
             document.getElementById("atm-card-container-iitg33405-fgti594").style.display="none";
         }else if(type === "MobileMoney"){

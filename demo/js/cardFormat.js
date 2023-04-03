@@ -77,10 +77,14 @@ function c_expires_format(event) {
 function c_cvv_format(){
     document.getElementById("c_cvv_error").style.display = "none";
     const value = document.getElementById("c_cvv").value;
-    var v = value.replace(
-        /[^0-9]/g, '' // To allow only numbers
-    )
-    document.getElementById("c_cvv").value = v;    
+    if(value.toString().length >2){
+        return false;
+    }else{
+        var v = value.replace(
+            /[^0-9]/g, '' // To allow only numbers
+        )
+        document.getElementById("c_cvv").value = v;
+    }    
 }
 function c_kes_acct_format(){
     document.getElementById("c_acct_error").style.display = "none";
