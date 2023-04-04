@@ -16,9 +16,15 @@ window.c_format =function(event) {
     const xx = value.substring(0, 2);      
     if (masterFormat.indexOf(xx) > -1){
         cardType = "master";
+        document.getElementById("mastercard").style.display = "block";
+        document.getElementById("visa").style.display = "none";
+        document.getElementById("verve").style.display = "none";
         document.getElementById("card-pin").style.display = "block";
     }else if(value.length > 0 && value[0] === "4") {
         cardType = "visa";
+        document.getElementById("mastercard").style.display = "none";
+        document.getElementById("visa").style.display = "block";
+        document.getElementById("verve").style.display = "none";
         document.getElementById("card-pin").style.display = "none";
     } else if(v.length > 6) {
         const first6CardDigit = Number(v.substring(0, 6));
@@ -27,7 +33,11 @@ window.c_format =function(event) {
         var r3 = 650002;
         var r4 = 650027;             
         if ((first6CardDigit >= r1 && first6CardDigit <= r2) || (first6CardDigit >= r3 && first6CardDigit <= r4 ) || (first6CardDigit == 628051)){
-            cardType = "Verve"
+            cardType = "Verve";
+            document.getElementById("mastercard").style.display = "none";
+            document.getElementById("visa").style.display = "none";
+            document.getElementById("verve").style.display = "block";
+        
         }
         document.getElementById("card-pin").style.display = "block";
     }

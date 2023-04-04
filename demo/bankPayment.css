@@ -35,6 +35,20 @@
     border-bottom: 1px solid #D7DCE0;
     padding: 0 24px;
 }
+#mastercard, #visa, #verve{
+    display: none;
+}
+#mastercard, #verve{
+    margin-top: 8px;
+}
+#visa {
+    margin-top: 15px;
+}
+.bank-payment-container-iitg33405-fgti594 .bank-payment-items .card-icon {
+    position: absolute; 
+    right: 10px;
+}
+
 .bank-payment-container-iitg33405-fgti594 .bank-payment-items {
     padding: 24px 24px 36px 24px;
     width: 90%;
@@ -82,6 +96,7 @@
 }
 .bank-payment-container-iitg33405-fgti594 .input-field {
     margin: 8px 0 20px 0;
+    position: relative;
 }
 .bank-payment-container-iitg33405-fgti594 input {
     height: 48px;
