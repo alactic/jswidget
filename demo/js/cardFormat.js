@@ -12,8 +12,15 @@ window.c_format =function(event) {
     var match = matches && matches[0] || ''
     var parts = []
 
+    if(value.length < 1) {
+        document.getElementById("mastercard").style.display = "none";
+        document.getElementById("visa").style.display = "none";
+        document.getElementById("verve").style.display = "none";
+        return
+    } 
     const masterFormat = ["22", "23", "24", "25", "26", "27", "51", "52", "54", "55", "60", "63", "67", "97" ];
     const xx = value.substring(0, 2);      
+   
     if (masterFormat.indexOf(xx) > -1){
         cardType = "master";
         document.getElementById("mastercard").style.display = "block";
@@ -32,7 +39,10 @@ window.c_format =function(event) {
         var r2 = 506198;
         var r3 = 650002;
         var r4 = 650027;             
-        if ((first6CardDigit >= r1 && first6CardDigit <= r2) || (first6CardDigit >= r3 && first6CardDigit <= r4 ) || (first6CardDigit == 628051)){
+        var r5 = 507865;             
+        var r6 = 507964;             
+
+        if ((first6CardDigit >= r1 && first6CardDigit <= r2) || (first6CardDigit >= r3 && first6CardDigit <= r4 ) || (first6CardDigit >= r5 && first6CardDigit <= r6 ) || (first6CardDigit == 628051)){
             cardType = "Verve";
             document.getElementById("mastercard").style.display = "none";
             document.getElementById("visa").style.display = "none";
