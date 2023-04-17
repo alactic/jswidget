@@ -86,10 +86,8 @@ function makeTransaction(type){
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
         }else{
             reference = res.responseData.TransactionRefernce;
-            if(type === "MobileMoney"){
-              validatePayment();
-              return
-            }else if(type === "cards" && cardType ==="visa"){
+             
+            if(type === "cards" && cardType ==="visa"){
             document.getElementById("transaction-items").style.display="none"
 
               const {MD, PostUrl, jwt} = res.responseData.FormData
@@ -107,9 +105,19 @@ function makeTransaction(type){
             document.getElementsByClassName("amount")[1].innerHTML=totalAmount
             document.getElementsByClassName("currency")[1].innerHTML=currency
             document.getElementById("bank-name").innerHTML=BankName
-            document.getElementById("account-number").innerHTML=AccountNumber
-            document.getElementById("expiryTime").innerHTML=ExpiryTime
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
+            console.log({res})
+            if(type === "MobileMoney"){
+                document.getElementById("expiryTime").innerHTML=30;
+            document.getElementById("bank-name").innerHTML=""
+            document.getElementById("account-number").innerHTML=document.getElementById("c_acct").value
+            }else{
+            document.getElementById("account-number").innerHTML=AccountNumber
+                document.getElementById("expiryTime").innerHTML=ExpiryTime
+            document.getElementById("bank-name").innerHTML=BankName
+
+            
+            }
             }                    
         }
         if((!res.requestSuccessful && cardType ==="visa")||cardType !=="visa") {

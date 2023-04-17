@@ -25,8 +25,8 @@ function validatePayment(type){
     })
     .then(response => response.json())
     .then(res => {
-        const status = res.responseData && res.responseData.transactionStatus
-        if(!res.requestSuccessful || (status !== "Processing" && status !== "Success")){
+        const status = res.responseData && res.responseData.transactionStatus;
+        if(res.responseData && status !=="Pending" && status !== "Processing" && status !== "Success"){
                 document.getElementById("transaction-message-fgti594").style.display="flex"
                 document.getElementById("transaction-items").style.display="none"
                 document.getElementById("transaction-failed-items").style.display="flex"
@@ -34,8 +34,9 @@ function validatePayment(type){
                 const url = new URL(window.location.href);
                 document.getElementById("transaction-loading-container-fgti594").style.display="none"
 
-            }else if(status !== "Processing" || (type === "card" && status === "Processing")){
-                document.getElementById("transaction-message-fgti594").style.display="flex"
+            }else if((status !== "Processing" &&  status !=="Pending") || (type === "card" && status === "Processing")){
+        console.log({s1:status})
+        document.getElementById("transaction-message-fgti594").style.display="flex"
                 document.getElementById("transaction-items").style.display="flex"
                 document.getElementById("transaction-failed-items").style.display="none"
                 document.getElementsByClassName("amount")[0].innerHTML=res.message
