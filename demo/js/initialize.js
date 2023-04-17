@@ -62,11 +62,10 @@ window.initialise = async function() {
         cardAmount = Cards?configAmount(Cards):'';
         transferAmount = Transfer?configAmount(Transfer):"";
         mobileMoneyAmount = MobileMoney?configAmount(MobileMoney):"";
+        console.log({mobileMoneyAmount})
         dataPayload['initReference'] = res.responseData.reference;
         if(currency.toLowerCase() === "kes"){
-            document.getElementById( 'kenya-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
-            document.getElementById("kes_pay").innerHTML = `Pay ${mobileMoneyAmount} ${currency}`;
-            document.getElementById("kes-transaction-title").innerHTML = `How would you like to pay ${currency} ${mobileMoneyAmount}?`
+            document.getElementById( 'kenya-option-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
         }else {
             document.getElementById( 'transfer-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
         }
