@@ -100,23 +100,20 @@ function makeTransaction(type){
               document.getElementById( 'otp-container-iitg33405-fgti594' ).style.display = 'flex';
             }else{
                 document.getElementsByClassName( 'bank-transfer-container-iitg33405-fgti594' )[0].style.display = 'flex';
-                document.getElementsByClassName("amount")[0].innerHTML=totalAmount
-            document.getElementsByClassName("currency")[0].innerHTML=currency
-            document.getElementsByClassName("amount")[1].innerHTML=totalAmount
-            document.getElementsByClassName("currency")[1].innerHTML=currency
-            document.getElementById("bank-name").innerHTML=BankName
+                document.getElementsByClassName("amount")[0].innerHTML=totalAmount;
+            document.getElementsByClassName("currency")[0].innerHTML=currency;
+            document.getElementsByClassName("amount")[1].innerHTML=totalAmount;
+            document.getElementsByClassName("currency")[1].innerHTML=currency;
+            document.getElementById("bank-name").innerHTML=BankName?.toUpperCase();
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
-            console.log({res})
             if(type === "MobileMoney"){
-            document.getElementById("bank-name").innerHTML="";
-            document.getElementById("account-number").innerHTML=document.getElementById("c_acct").value
-            document.getElementById("account-desc").innerHTML="Action the prompt sent to the above number to complete the transaction. Once done, click the button below."
+                document.getElementById("bank-name").innerHTML="";
+                document.getElementById("account-number").innerHTML=document.getElementById("c_acct").value
+                document.getElementById("account-desc").innerHTML="Action the prompt sent to the above number to complete the transaction. Once done, click the button below."
             }else{
-            document.getElementById("account-number").innerHTML=AccountNumber
+                document.getElementById("account-number").innerHTML=AccountNumber
                 document.getElementById("expiryTime").innerHTML=ExpiryTime
-            document.getElementById("bank-name").innerHTML=BankName
-
-            
+                document.getElementById("bank-name").innerHTML=BankName?.toUpperCase();        
             }
             }                    
         }
