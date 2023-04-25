@@ -108,9 +108,9 @@ function makeTransaction(type){
             document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
             console.log({res})
             if(type === "MobileMoney"){
-                document.getElementById("expiryTime").innerHTML=30;
-            document.getElementById("bank-name").innerHTML=""
+            document.getElementById("bank-name").innerHTML="";
             document.getElementById("account-number").innerHTML=document.getElementById("c_acct").value
+            document.getElementById("account-desc").innerHTML="Action the prompt sent to the above number to complete the transaction. Once done, click the button below."
             }else{
             document.getElementById("account-number").innerHTML=AccountNumber
                 document.getElementById("expiryTime").innerHTML=ExpiryTime
