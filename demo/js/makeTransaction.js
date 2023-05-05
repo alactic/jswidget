@@ -45,14 +45,12 @@ function makeTransaction(type){
             const chargeParameter = {
               "MobileNumber": document.getElementById("c_acct").value,
              }
-            const {amount} = chargeParameter; 
-            if(amount ==="") {
+             if(document.getElementById("c_acct").value === "") {
                 validInput = true;
                 document.getElementById("c_acct_error").style.display = "block";
-            }
-            if(validInput) {
                 return
-            }
+             }
+          
             totalAmount = transferAmount
             payload["chargeParameter"] = chargeParameter;  
             document.getElementById("atm-card-container-iitg33405-fgti594").style.display="none";
