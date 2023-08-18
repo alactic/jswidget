@@ -130,7 +130,7 @@
         <div class="bank-payment-content">
             <div class="bank-payment-header" id="payment-header">
                 <img src="" onclick="closeModal()" id="logo6" class="logo-icon" alt="icon"/>
-                <img src="./assets/cancel-icon.png" onclick="closeModal()" class="cancel-icon" alt="icon"/>
+                <img src="./assets/cancel-icon.png"  onclick="closeModal()" class="cancel-icon" alt="icon"/>
             </div>
             <!-- START OF CARD FIELD DETAILS -->
             <div class="bank-payment-items" id="atm-card-container-iitg33405-fgti594">
@@ -241,10 +241,22 @@
             <div id="transaction-loading-container-fgti594" class="transaction-loading-container-iitg33405-fgti594">
                 <div class="transaction-feedback-content">
                     <div class="content">
-                        <div class="description">
+                        <div id="description">
+                            <div class="transaction-loading-content" id="loader-content">
                             <div class="content-loader"></div>
                             Please wait while your transaction 
                             is in progress.
+                            </div>
+
+                            <div>
+                                <div  id="transaction-counter"><span id="transaction-counter-digit">4</span><span id="transaction-counter-second">59</span></div>
+                                <div  id="transaction-message">
+                                    We are unable to confirm this transaction at this time. Once confirmed, the merchant will be notified.
+                                </div>
+                                <div id="transaction-feedback-close-btn-div">
+                                    <button class="transaction-feedback-close-btn" id="transaction-close" onclick="closeModal()">Close</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="secure-baseone">
                             <img src="./assets/secure-icon.jpg" alt="icon"/>Secured by &nbsp;<b>Baseone</b>

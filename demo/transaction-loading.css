@@ -9,8 +9,66 @@
 }
 .transaction-loading-container-iitg33405-fgti594 .transaction-feedback-content{ 
     width: 400px;
-    background-color: #FFFFFF;
-    
+    background-color: #FFFFFF;  
+ }
+#transaction-counter{ 
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 30px;
+    color: #3A434B;
+    display: none;
+    justify-content: center;
+ }
+#transaction-counter-second{ 
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    text-align: center;
+    color: #3A434B;
+    display: inline-block;
+    margin-left: 6px;
+ }
+.transaction-loading-container-iitg33405-fgti594 .transaction-feedback-content #transaction-message{ 
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 40px;
+    color: #3A434B;
+    display: none;
+    justify-content: center;
+ }
+.transaction-loading-container-iitg33405-fgti594 .transaction-feedback-content #transaction-feedback-close-btn-div{
+  display: none;
+  justify-content: center;
+  margin-top: 70px;
+  margin-bottom: -40px;
+} 
+.transaction-loading-container-iitg33405-fgti594 .transaction-feedback-content .transaction-feedback-close-btn{ 
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+      background: #175FFF;
+      border: none;
+      text-align: center;
+      color: #FFFFFF;
  }
 .transaction-loading-container-iitg33405-fgti594 .content{ 
     padding: 24px;
@@ -37,6 +95,20 @@
     align-items: center;
     height: 400px;
 }
+.transaction-loading-container-iitg33405-fgti594 .transaction-loading-content{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #3A434B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
 
 .transaction-loading-container-iitg33405-fgti594 .transaction-message-items{ 
     display: flex;
