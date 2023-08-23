@@ -35,8 +35,10 @@ window.initialise = async function() {
     clientAmount = dataPayload.amount;
     currency = dataPayload.currency;
     channel = dataPayload.channel;
-    document.getElementById("logo").src= imageUrl;
-    document.getElementById("logo6").src= imageUrl;
+    document.getElementById("logo1").src= imageUrl;
+    document.getElementById("logo2").src= imageUrl;
+    document.getElementById("logo3").src= imageUrl;
+    document.getElementById("logo4").src= imageUrl;
     document.getElementById("card-pin").style.display = "none";
     document.getElementsByClassName("logo-icon")[0].src= imageUrl;
     if(channel && channel.toLowerCase() === "transfer") {
@@ -62,7 +64,6 @@ window.initialise = async function() {
         cardAmount = Cards?configAmount(Cards):'';
         transferAmount = Transfer?configAmount(Transfer):"";
         mobileMoneyAmount = MobileMoney?configAmount(MobileMoney):"";
-        console.log({mobileMoneyAmount})
         dataPayload['initReference'] = res.responseData.reference;
         if(currency.toLowerCase() === "kes"){
             document.getElementById( 'kenya-option-container-495gjjhg-gkhkhjg' ).style.display = 'flex';
