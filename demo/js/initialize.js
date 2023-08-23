@@ -39,6 +39,7 @@ window.initialise = async function() {
     document.getElementById("logo2").src= imageUrl;
     document.getElementById("logo3").src= imageUrl;
     document.getElementById("logo4").src= imageUrl;
+    document.getElementById("logo4").style.display= "block"
     document.getElementById("card-pin").style.display = "none";
     document.getElementsByClassName("logo-icon")[0].src= imageUrl;
     if(channel && channel.toLowerCase() === "transfer") {

@@ -27,6 +27,9 @@
     width: 400px;
     background-color: #FFFFFF;
 }
+#logo4{
+    display: none;
+}
 .bank-payment-container-iitg33405-fgti594 .bank-payment-header{
     height: 64px;
     display: flex;
