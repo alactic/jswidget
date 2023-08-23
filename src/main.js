@@ -26,7 +26,6 @@ switch(data.env) {
     default:
         url = "https://baseonecollectwidgetprod.azureedge.net"; 
 }
-console.log({origin: window.location, url3: url})
 
     var iframe = document.createElement('iframe');
   iframe.id = "hidden_iframe";
@@ -44,7 +43,7 @@ console.log({origin: window.location, url3: url})
 function closeWidget(){
     var url = new URL(window.location.href);
             var c = url.searchParams.get("data");
-    window.open(JSON.parse(c).url||document.referrer,'_parent','');
+    window.open(JSON.parse(c).callbackUrl||document.referrer,'_parent','');
     // window.open(document.referrer,'_parent','');
  }
  
