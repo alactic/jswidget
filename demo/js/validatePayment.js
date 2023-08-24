@@ -56,7 +56,7 @@ function validatePayment(type){
                         clearInterval(counterInterval)
                         clearInterval(makeValidationInterval)
                         
-                    }else if((status !== "Processing" &&  status !=="Pending") || (type === "card" && status === "Processing")){
+                    }else if(status !== "Success" && ((status !== "Processing" &&  status !=="Pending") || (type === "card" && status === "Processing"))){
                 document.getElementById("transaction-message-fgti594").style.display="flex"
                         document.getElementById("transaction-items").style.display="flex"
                         document.getElementById("transaction-failed-items").style.display="none"
@@ -70,7 +70,10 @@ function validatePayment(type){
                         // const onSuccess = eval("(" + successRes + ")");
                         // onSuccess()
                     document.getElementById("transaction-loading-container-fgti594").style.display="none"
-                }else{
+                }else if(status === "Success"){
+                    document.getElementById("transaction-failed-items").style.display="none"
+                            document.getElementById("transaction-items").style.display="flex"
+                            }else{
                     makeValidationInterval = setTimeout(() => makeValidation(), 15000)
                 }
             
