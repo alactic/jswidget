@@ -26,6 +26,8 @@ function validatePayment(type){
                 document.getElementById("transaction-feedback-close-btn-div").style.display="flex";
                 document.getElementById("transaction-counter").style.display="none";
                 document.getElementById("loader-content").style.display="none";
+                clearInterval(counterInterval)
+                        clearInterval(makeValidationInterval)
             }else {
                 document.getElementById("transaction-counter-digit").innerHTML = Number(counterMin) - 1;
             }
@@ -58,20 +60,18 @@ function validatePayment(type){
                         
                     }else if(status !== "Success" && ((status !== "Processing" &&  status !=="Pending") || (type === "card" && status === "Processing"))){
                 document.getElementById("transaction-message-fgti594").style.display="flex"
-                        document.getElementById("transaction-items").style.display="flex"
-                        document.getElementById("transaction-failed-items").style.display="none"
+                        document.getElementById("transaction-items").style.display="none"
+                        document.getElementById("transaction-failed-items").style.display="flex"
                         document.getElementsByClassName("amount")[0].innerHTML=res.message
                         document.getElementsByClassName("currency")[0].innerHTML=res.message
                         document.getElementById("bank-name").innerHTML=res.message
                         document.getElementById("account-number").innerHTML=res.message
                         document.getElementsByClassName("message-desc")[0].innerHTML=res.message;
                         const url = new URL(window.location.href);
-                        // const successRes = url.searchParams.get("success");
-                        // const onSuccess = eval("(" + successRes + ")");
-                        // onSuccess()
                     document.getElementById("transaction-loading-container-fgti594").style.display="none"
-                }else if(status === "Success"){
-                    document.getElementById("transaction-failed-items").style.display="none"
+                }else if(status === "Success" || status === "success"){
+                    document.getElementById("transaction-failed-items").style.display="none";
+                document.getElementById("transaction-message-fgti594").style.display="none"
                             document.getElementById("transaction-items").style.display="flex"
                             }else{
                     makeValidationInterval = setTimeout(() => makeValidation(), 15000)
